@@ -1,6 +1,5 @@
 package com.flyco.tablayout.utils;
 
-
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;

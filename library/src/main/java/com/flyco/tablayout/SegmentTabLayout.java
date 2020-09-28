@@ -20,15 +20,17 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.FragmentChangeManager;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SegmentTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
@@ -98,6 +100,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
 
     private FragmentChangeManager mFragmentChangeManager;
     private float[] mRadiusArr = new float[8];
+
+    private final List<OnTabSelectedListener> selectedListeners = new ArrayList<>();
 
     public SegmentTabLayout(Context context) {
         this(context, null, 0);
@@ -217,12 +221,12 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
                 int position = (Integer) v.getTag();
                 if (mCurrentTab != position) {
                     setCurrentTab(position);
-                    if (mListener != null) {
-                        mListener.onSelected(position);
+                    for (int i = 0; i < selectedListeners.size(); i++) {
+                        selectedListeners.get(i).onSelected(position);
                     }
                 } else {
-                    if (mListener != null) {
-                        mListener.onUnselected(position);
+                    for (int i = 0; i < selectedListeners.size(); i++) {
+                        selectedListeners.get(i).onUnselected(position);
                     }
                 }
             }
@@ -722,10 +726,14 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         return tipView;
     }
 
-    private OnTabListener mListener;
+    public void addOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        if (!selectedListeners.contains(listener)) {
+            selectedListeners.add(listener);
+        }
+    }
 
-    public void setOnTabSelectListener(OnTabListener listener) {
-        this.mListener = listener;
+    public void removeOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        selectedListeners.remove(listener);
     }
 
     @Override

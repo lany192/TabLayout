@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.TabEntity;
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
@@ -91,7 +91,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_7.setTabData(mTabEntities);
         mTabLayout_8.setTabData(mTabEntities);
 
-        mTabLayout_3.setOnTabSelectListener(new OnTabListener() {
+        mTabLayout_3.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
             public void onSelected(int position) {
                 mTabLayout_1.setCurrentTab(position);
@@ -144,7 +144,7 @@ public class CommonTabActivity extends AppCompatActivity {
 
     private void tl_2() {
         mTabLayout_2.setTabData(mTabEntities);
-        mTabLayout_2.setOnTabSelectListener(new OnTabListener() {
+        mTabLayout_2.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
             public void onSelected(int position) {
                 mViewPager.setCurrentItem(position);

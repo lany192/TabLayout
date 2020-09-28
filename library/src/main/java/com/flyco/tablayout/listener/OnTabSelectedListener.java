@@ -1,6 +1,6 @@
 package com.flyco.tablayout.listener;
 
-public interface OnTabListener {
+public interface OnTabSelectedListener {
 
     void onSelected(int position);
 

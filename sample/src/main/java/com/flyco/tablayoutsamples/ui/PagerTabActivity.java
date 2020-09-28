@@ -15,7 +15,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.flyco.tablayout.PagerTabLayout;
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -23,7 +23,7 @@ import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PagerTabActivity extends AppCompatActivity implements OnTabListener {
+public class PagerTabActivity extends AppCompatActivity implements OnTabSelectedListener {
     private List<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {"精选", "轻读", "排行", "分类", "自定义", "设计", "工具资源"};
     private MyPagerAdapter mAdapter;
@@ -63,7 +63,7 @@ public class PagerTabActivity extends AppCompatActivity implements OnTabListener
 
         tabLayout_1.setViewPager2(viewPager2, mTitles);
         tabLayout_2.setViewPager2(viewPager2, mTitles);
-        tabLayout_2.setOnTabSelectListener(this);
+        tabLayout_2.addOnTabSelectedListener(this);
         tabLayout_3.setViewPager2(viewPager2, mTitles);
         tabLayout_4.setViewPager2(viewPager2, mTitles);
         tabLayout_5.setViewPager2(viewPager2, mTitles);

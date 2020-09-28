@@ -23,11 +23,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.flyco.tablayout.listener.TabEntity;
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.FragmentChangeManager;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
@@ -126,6 +127,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     private OvershootInterpolator mInterpolator = new OvershootInterpolator(1.5f);
 
     private FragmentChangeManager mFragmentChangeManager;
+
+    private final List<OnTabSelectedListener> selectedListeners = new ArrayList<>();
 
     public CommonTabLayout(Context context) {
         this(context, null, 0);
@@ -268,12 +271,12 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
                 int position = (Integer) v.getTag();
                 if (mCurrentTab != position) {
                     setCurrentTab(position);
-                    if (mListener != null) {
-                        mListener.onSelected(position);
+                    for (int i = 0; i < selectedListeners.size(); i++) {
+                        selectedListeners.get(i).onSelected(position);
                     }
                 } else {
-                    if (mListener != null) {
-                        mListener.onUnselected(position);
+                    for (int i = 0; i < selectedListeners.size(); i++) {
+                        selectedListeners.get(i).onUnselected(position);
                     }
                 }
             }
@@ -927,12 +930,15 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         return tipView;
     }
 
-    private OnTabListener mListener;
-
-    public void setOnTabSelectListener(OnTabListener listener) {
-        this.mListener = listener;
+    public void addOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        if (!selectedListeners.contains(listener)) {
+            selectedListeners.add(listener);
+        }
     }
 
+    public void removeOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        selectedListeners.remove(listener);
+    }
 
     @Override
     protected Parcelable onSaveInstanceState() {

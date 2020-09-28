@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.PagerTabLayout;
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -20,7 +20,7 @@ import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlidingTabActivity extends AppCompatActivity implements OnTabListener {
+public class SlidingTabActivity extends AppCompatActivity implements OnTabSelectedListener {
     private List<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "热门", "iOS", "Android"
@@ -66,7 +66,7 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabListen
 
         tabLayout_1.setViewPager(vp, mTitles);
         tabLayout_2.setViewPager(vp, mTitles);
-        tabLayout_2.setOnTabSelectListener(this);
+        tabLayout_2.addOnTabSelectedListener(this);
         tabLayout_3.setViewPager(vp, mTitles);
         tabLayout_4.setViewPager(vp, mTitles);
         tabLayout_5.setViewPager(vp, mTitles);

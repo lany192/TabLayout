@@ -19,10 +19,11 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.flyco.tablayout.listener.OnTabListener;
+import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
@@ -110,6 +111,9 @@ public class PagerTabLayout extends HorizontalScrollView {
     private int mHeight;
     private boolean mSnapOnTabClick;
 
+
+    private final List<OnTabSelectedListener> selectedListeners = new ArrayList<>();
+
     public PagerTabLayout(Context context) {
         this(context, null, 0);
     }
@@ -180,6 +184,16 @@ public class PagerTabLayout extends HorizontalScrollView {
         mTabPadding = ta.getDimension(R.styleable.PagerTabLayout_tl_tabPadding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(20));
 
         ta.recycle();
+    }
+
+    public void addOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        if (!selectedListeners.contains(listener)) {
+            selectedListeners.add(listener);
+        }
+    }
+
+    public void removeOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
+        selectedListeners.remove(listener);
     }
 
     private ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
@@ -313,12 +327,12 @@ public class PagerTabLayout extends HorizontalScrollView {
                             } else {
                                 mViewPager.setCurrentItem(position);
                             }
-                            if (mListener != null) {
-                                mListener.onSelected(position);
+                            for (int i = 0; i < selectedListeners.size(); i++) {
+                                selectedListeners.get(i).onSelected(position);
                             }
                         } else {
-                            if (mListener != null) {
-                                mListener.onUnselected(position);
+                            for (int i = 0; i < selectedListeners.size(); i++) {
+                                selectedListeners.get(i).onUnselected(position);
                             }
                         }
                     }
@@ -329,13 +343,12 @@ public class PagerTabLayout extends HorizontalScrollView {
                             } else {
                                 mViewPager2.setCurrentItem(position);
                             }
-
-                            if (mListener != null) {
-                                mListener.onSelected(position);
+                            for (int i = 0; i < selectedListeners.size(); i++) {
+                                selectedListeners.get(i).onSelected(position);
                             }
                         } else {
-                            if (mListener != null) {
-                                mListener.onUnselected(position);
+                            for (int i = 0; i < selectedListeners.size(); i++) {
+                                selectedListeners.get(i).onUnselected(position);
                             }
                         }
                     }
@@ -909,12 +922,6 @@ public class PagerTabLayout extends HorizontalScrollView {
         View tabView = mTabsContainer.getChildAt(position);
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         return tipView;
-    }
-
-    private OnTabListener mListener;
-
-    public void setOnTabSelectListener(OnTabListener listener) {
-        this.mListener = listener;
     }
 
     @Override

@@ -17,7 +17,7 @@
 	
 # Sample
 
-    https://github.com/H07000223/FlycoTabLayout
+    https://github.com/lany192/TabLayout/tree/master/sample/src/main/java/com/flyco/tablayoutsamples/ui
 
 ## Attributes
 

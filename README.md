@@ -1,6 +1,6 @@
-# TabLayout
-
 [![](https://jitpack.io/v/lany192/TabLayout.svg)](https://jitpack.io/#lany192/TabLayout)
+
+# TabLayout
 
 # Use
 
@@ -18,6 +18,23 @@
 # Sample
 
     https://github.com/lany192/TabLayout/tree/master/sample/src/main/java/com/flyco/tablayoutsamples/ui
+    
+    <com.flyco.tablayout.PagerTabLayout
+        android:id="@+id/tl_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        app:tl_indicatorCornerRadius="3dp"
+        app:tl_indicatorColor="#FFF4B4"
+        app:tl_indicatorHeight="6dp"
+        app:tl_indicatorMarginBottom="10dp"
+        app:tl_indicatorWidthEqualTitle="true"
+        app:tl_selectedTextColor="#06142E"
+        app:tl_selectedTextSize="22sp"
+        app:tl_unselectedTextColor="#666666"
+        app:tl_unselectedTextSize="18sp" />
 
 ## Attributes
 

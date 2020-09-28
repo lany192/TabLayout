@@ -128,8 +128,8 @@
                 app:tl_indicatorCornerRadius="5dp"
                 app:tl_indicatorMarginLeft="2dp"
                 app:tl_indicatorMarginRight="2dp"
-                app:tl_unselectedTextSize="12sp"
-                app:tl_selectedTextSize="16sp"
+                app:tl_unselectedTextSize="14sp"
+                app:tl_selectedTextSize="18sp"
                 app:tl_indicatorStyle="BLOCK" />
         </LinearLayout>
 

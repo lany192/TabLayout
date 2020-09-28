@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.SparseArray;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
@@ -78,8 +77,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     private static final int TEXT_BOLD_NONE = 0;
     private static final int TEXT_BOLD_WHEN_SELECT = 1;
     private static final int TEXT_BOLD_BOTH = 2;
-    private float mSelectedTextSize;
-    private float mUnselectedTextSize;
+    private float mSelectedTextSizePx;
+    private float mUnselectedTextSizePx;
     private int mSelectedTextColor;
     private int mUnselectedTextColor;
     private int mTextBold;
@@ -153,8 +152,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         mDividerWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_dividerWidth, DensityUtils.dp2px(1));
         mDividerPadding = ta.getDimension(R.styleable.SegmentTabLayout_tl_dividerPadding, 0);
 
-        mSelectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_selectedTextSize, DensityUtils.sp2px(14));
-        mUnselectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_unselectedTextSize, DensityUtils.sp2px(14));
+        mSelectedTextSizePx = ta.getDimension(R.styleable.PagerTabLayout_tl_selectedTextSize, DensityUtils.sp2px(14));
+        mUnselectedTextSizePx = ta.getDimension(R.styleable.PagerTabLayout_tl_unselectedTextSize, DensityUtils.sp2px(14));
         mSelectedTextColor = ta.getColor(R.styleable.SegmentTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
         mUnselectedTextColor = ta.getColor(R.styleable.SegmentTabLayout_tl_unselectedTextColor, mIndicatorColor);
         mTextBold = ta.getInt(R.styleable.SegmentTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -245,7 +244,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             tabView.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
             tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
-            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
+            tv_tab_title.setTextSize(i == mCurrentTab ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
 //            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             if (mTextAllCaps) {
                 tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
@@ -499,20 +498,20 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public float getSelectedTextSize() {
-        return mSelectedTextSize;
+        return mSelectedTextSizePx;
     }
 
     public void setSelectedTextSize(float textSize) {
-        this.mSelectedTextSize = textSize;
+        this.mSelectedTextSizePx = textSize;
         updateTabStyles();
     }
 
     public float getUnselectedTextSize() {
-        return mUnselectedTextSize;
+        return mUnselectedTextSizePx;
     }
 
     public void setUnselectedTextSize(float textSize) {
-        this.mUnselectedTextSize = textSize;
+        this.mUnselectedTextSizePx = textSize;
         updateTabStyles();
     }
 
@@ -698,7 +697,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(position == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
+            mTextPaint.setTextSize(position == mCurrentTab ? mSelectedTextSizePx : mUnselectedTextSizePx);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();

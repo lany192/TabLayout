@@ -649,13 +649,40 @@ public class SlidingTabLayout extends HorizontalScrollView {
         invalidate();
     }
 
-    public void setTextSelectColor(int textSelectColor) {
-        this.mSelectedTextColor = textSelectColor;
+
+    public float getSelectedTextSize() {
+        return mSelectedTextSize;
+    }
+
+    public void setSelectedTextSize(float textSize) {
+        this.mSelectedTextSize = textSize;
         updateTabStyles();
     }
 
-    public void setTextUnselectColor(int textUnselectColor) {
-        this.mUnselectedTextColor = textUnselectColor;
+    public float getUnselectedTextSize() {
+        return mUnselectedTextSize;
+    }
+
+    public void setUnselectedTextSize(float textSize) {
+        this.mUnselectedTextSize = textSize;
+        updateTabStyles();
+    }
+
+    public int getSelectedTextColor() {
+        return mSelectedTextColor;
+    }
+
+    public void setSelectedTextColor(int textColor) {
+        this.mSelectedTextColor = textColor;
+        updateTabStyles();
+    }
+
+    public int getUnselectedTextColor() {
+        return mUnselectedTextColor;
+    }
+
+    public void setUnselectedTextColor(int textColor) {
+        this.mUnselectedTextColor = textColor;
         updateTabStyles();
     }
 
@@ -748,14 +775,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
     public float getDividerPadding() {
         return mDividerPadding;
-    }
-
-    public int getTextSelectColor() {
-        return mSelectedTextColor;
-    }
-
-    public int getTextUnselectColor() {
-        return mUnselectedTextColor;
     }
 
     public int getTextBold() {

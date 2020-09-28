@@ -1,13 +1,13 @@
 package com.flyco.tablayoutsamples.entity;
 
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.TabEntity;
 
-public class TabEntity implements CustomTabEntity {
+public class TabItem implements TabEntity {
     public String title;
     public int selectedIcon;
     public int unSelectedIcon;
 
-    public TabEntity(String title, int selectedIcon, int unSelectedIcon) {
+    public TabItem(String title, int selectedIcon, int unSelectedIcon) {
         this.title = title;
         this.selectedIcon = selectedIcon;
         this.unSelectedIcon = unSelectedIcon;

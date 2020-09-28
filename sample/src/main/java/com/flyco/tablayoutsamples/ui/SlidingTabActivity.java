@@ -1,6 +1,5 @@
 package com.flyco.tablayoutsamples.ui;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +18,10 @@ import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SlidingTabActivity extends AppCompatActivity implements OnTabSelectListener {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    private List<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "热门", "iOS", "Android"
             , "前端", "后端", "设计", "工具资源"
@@ -110,12 +109,12 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
 
     @Override
     public void onTabSelect(int position) {
-        Toast.makeText(mContext, "onTabSelect&position--->" + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "onTabSelect&position--->" + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onTabReselect(int position) {
-        Toast.makeText(mContext, "onTabReselect&position--->" + position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "onTabReselect&position--->" + position, Toast.LENGTH_SHORT).show();
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {

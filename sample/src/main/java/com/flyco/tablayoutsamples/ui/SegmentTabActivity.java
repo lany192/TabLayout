@@ -17,10 +17,11 @@ import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SegmentTabActivity extends AppCompatActivity {
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private List<Fragment> mFragments = new ArrayList<>();
+    private List<Fragment> mFragments2 = new ArrayList<>();
 
     private String[] mTitles = {"首页", "消息"};
     private String[] mTitles_2 = {"首页", "消息", "联系人"};

@@ -1,6 +1,5 @@
 package com.flyco.tablayoutsamples.ui;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,21 +11,22 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.TabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
-import com.flyco.tablayoutsamples.entity.TabEntity;
+import com.flyco.tablayoutsamples.entity.TabItem;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CommonTabActivity extends AppCompatActivity {
-    private Context mContext = this;
-    private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private ArrayList<Fragment> mFragments2 = new ArrayList<>();
+    private List<Fragment> mFragments = new ArrayList<>();
+    private List<Fragment> mFragments2 = new ArrayList<>();
 
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
     private int[] mIconUnselectIds = {
@@ -35,7 +35,7 @@ public class CommonTabActivity extends AppCompatActivity {
     private int[] mIconSelectIds = {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
-    private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
+    private List<TabEntity> mTabEntities = new ArrayList<>();
     private View mDecorView;
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
@@ -59,7 +59,7 @@ public class CommonTabActivity extends AppCompatActivity {
 
 
         for (int i = 0; i < mTitles.length; i++) {
-            mTabEntities.add(new TabEntity(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
+            mTabEntities.add(new TabItem(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]));
         }
 
         mDecorView = getWindow().getDecorView();
@@ -128,7 +128,7 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_2.showDot(2);
         MsgView rtv_2_2 = mTabLayout_2.getMsgView(2);
         if (rtv_2_2 != null) {
-            UnreadMsgUtils.setSize(rtv_2_2, dp2px(7.5f));
+            UnreadMsgUtils.setSize(rtv_2_2, DensityUtils.dp2px(7.5f));
         }
 
         //设置未读消息背景
@@ -198,10 +198,5 @@ public class CommonTabActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
-    }
-
-    protected int dp2px(float dp) {
-        final float scale = mContext.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
     }
 }

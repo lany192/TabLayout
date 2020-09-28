@@ -2,35 +2,7 @@
 
 [![](https://jitpack.io/v/lany192/TabLayout.svg)](https://jitpack.io/#lany192/TabLayout)
 
-An Android TabLayout Lib has 3 kinds of TabLayout at present.
-
-* SlidingTabLayout: deeply modified from [PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip).
-    * new added attribute
-    * new added kinds of indicators
-    * new added unread msg tip
-    * new added method for convenience
-    
-    ```java
-        /** no need to set titles in adapter */
-        public void setViewPager(ViewPager vp, String[] titles)
-        
-        /** no need to initialize even adapter */
-        public void setViewPager(ViewPager vp, String[] titles, FragmentActivity fa, ArrayList<Fragment> fragments) 
-    ```
-
-* CommonTabLayout:unlike SlidingTabLayout's dependence on ViewPager,it is a tabLayout without dependence on ViewPager and 
-can be used freely with other widgets together.
-    * support kinds of indicators and indicator animation
-    * support unread msg tip
-    * support icon and icon gravity.
-    * new added method for convenience
-    
-    ```java
-        /** support switch fragments itself */
-        public void setTabData(ArrayList<CustomTabEntity> tabEntitys, FragmentManager fm, int containerViewId, ArrayList<Fragment> fragments)
-    ```
-
-* SegmentTabLayout
+# Use
 
 	allprojects {
 		repositories {
@@ -42,6 +14,10 @@ can be used freely with other widgets together.
 	dependencies {
 	        implementation 'com.github.lany192:TabLayout:3.0.0'
 	}
+	
+# Sample
+
+    https://github.com/H07000223/FlycoTabLayout
 
 ## Attributes
 

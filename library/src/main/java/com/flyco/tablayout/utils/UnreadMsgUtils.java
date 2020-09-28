@@ -13,6 +13,7 @@ import com.flyco.tablayout.widget.MsgView;
  * 数字超过两位,显示99+
  */
 public class UnreadMsgUtils {
+
     public static void show(MsgView msgView, int num) {
         if (msgView == null) {
             return;

@@ -149,36 +149,36 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private void obtainAttributes(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SlidingTabLayout);
 
-        mIndicatorStyle = ta.getInt(R.styleable.SlidingTabLayout_tl_indicator_style, STYLE_NORMAL);
-        mIndicatorColor = ta.getColor(R.styleable.SlidingTabLayout_tl_indicator_color, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
-        mIndicatorHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_height,
+        mIndicatorStyle = ta.getInt(R.styleable.SlidingTabLayout_tl_indicatorStyle, STYLE_NORMAL);
+        mIndicatorColor = ta.getColor(R.styleable.SlidingTabLayout_tl_indicatorColor, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
+        mIndicatorHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorHeight,
                 DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 4 : (mIndicatorStyle == STYLE_BLOCK ? -1 : 2)));
-        mIndicatorWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_width, DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_corner_radius, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
-        mIndicatorMarginLeft = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_left, DensityUtils.dp2px(0));
-        mIndicatorMarginTop = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_top, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
-        mIndicatorMarginRight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_right, DensityUtils.dp2px(0));
-        mIndicatorMarginBottom = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicator_margin_bottom, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
-        mIndicatorGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_indicator_gravity, Gravity.BOTTOM);
-        mIndicatorWidthEqualTitle = ta.getBoolean(R.styleable.SlidingTabLayout_tl_indicator_width_equal_title, false);
+        mIndicatorWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorWidth, DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorCornerRadius, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
+        mIndicatorMarginLeft = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorMarginLeft, DensityUtils.dp2px(0));
+        mIndicatorMarginTop = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorMarginTop, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
+        mIndicatorMarginRight = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorMarginRight, DensityUtils.dp2px(0));
+        mIndicatorMarginBottom = ta.getDimension(R.styleable.SlidingTabLayout_tl_indicatorMarginBottom, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
+        mIndicatorGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_indicatorGravity, Gravity.BOTTOM);
+        mIndicatorWidthEqualTitle = ta.getBoolean(R.styleable.SlidingTabLayout_tl_indicatorWidthEqualTitle, false);
 
-        mUnderlineColor = ta.getColor(R.styleable.SlidingTabLayout_tl_underline_color, Color.parseColor("#ffffff"));
-        mUnderlineHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_underline_height, DensityUtils.dp2px(0));
-        mUnderlineGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_underline_gravity, Gravity.BOTTOM);
+        mUnderlineColor = ta.getColor(R.styleable.SlidingTabLayout_tl_underlineColor, Color.parseColor("#ffffff"));
+        mUnderlineHeight = ta.getDimension(R.styleable.SlidingTabLayout_tl_underlineHeight, DensityUtils.dp2px(0));
+        mUnderlineGravity = ta.getInt(R.styleable.SlidingTabLayout_tl_underlineGravity, Gravity.BOTTOM);
 
-        mDividerColor = ta.getColor(R.styleable.SlidingTabLayout_tl_divider_color, Color.parseColor("#ffffff"));
-        mDividerWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_width, DensityUtils.dp2px(0));
-        mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_divider_padding, DensityUtils.dp2px(12));
+        mDividerColor = ta.getColor(R.styleable.SlidingTabLayout_tl_dividerColor, Color.parseColor("#ffffff"));
+        mDividerWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_dividerWidth, DensityUtils.dp2px(0));
+        mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_dividerPadding, DensityUtils.dp2px(12));
 
-        mTextsize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textsize, DensityUtils.sp2px(14));
+        mTextsize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textSize, DensityUtils.sp2px(14));
         mTextSelectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
-        mTextUnselectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textUnselectColor, Color.parseColor("#AAffffff"));
+        mTextUnselectColor = ta.getColor(R.styleable.SlidingTabLayout_tl_textUnselectedColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.SlidingTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.SlidingTabLayout_tl_textAllCaps, false);
 
-        mTabSpaceEqual = ta.getBoolean(R.styleable.SlidingTabLayout_tl_tab_space_equal, false);
-        mTabWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_width, DensityUtils.dp2px(-1));
-        mTabPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(20));
+        mTabSpaceEqual = ta.getBoolean(R.styleable.SlidingTabLayout_tl_tabSpaceEqual, false);
+        mTabWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_tabWidth, DensityUtils.dp2px(-1));
+        mTabPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_tabPadding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(20));
 
         ta.recycle();
     }

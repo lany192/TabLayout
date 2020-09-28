@@ -165,32 +165,32 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     private void obtainAttributes(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CommonTabLayout);
 
-        mIndicatorStyle = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_style, 0);
-        mIndicatorColor = ta.getColor(R.styleable.CommonTabLayout_tl_indicator_color, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
-        mIndicatorHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_height,
+        mIndicatorStyle = ta.getInt(R.styleable.CommonTabLayout_tl_indicatorStyle, 0);
+        mIndicatorColor = ta.getColor(R.styleable.CommonTabLayout_tl_indicatorColor, Color.parseColor(mIndicatorStyle == STYLE_BLOCK ? "#4B6A87" : "#ffffff"));
+        mIndicatorHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorHeight,
                 DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 4 : (mIndicatorStyle == STYLE_BLOCK ? -1 : 2)));
-        mIndicatorWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_width, DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_corner_radius, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
-        mIndicatorMarginLeft = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_left, DensityUtils.dp2px(0));
-        mIndicatorMarginTop = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_top, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
-        mIndicatorMarginRight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_right, DensityUtils.dp2px(0));
-        mIndicatorMarginBottom = ta.getDimension(R.styleable.CommonTabLayout_tl_indicator_margin_bottom, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
+        mIndicatorWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorWidth, DensityUtils.dp2px(mIndicatorStyle == STYLE_TRIANGLE ? 10 : -1));
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorCornerRadius, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? -1 : 0));
+        mIndicatorMarginLeft = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginLeft, DensityUtils.dp2px(0));
+        mIndicatorMarginTop = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginTop, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
+        mIndicatorMarginRight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginRight, DensityUtils.dp2px(0));
+        mIndicatorMarginBottom = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginBottom, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorAnimEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_anim_enable, true);
         mIndicatorBounceEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_bounce_enable, true);
         mIndicatorAnimDuration = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_anim_duration, -1);
-        mIndicatorGravity = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_gravity, Gravity.BOTTOM);
+        mIndicatorGravity = ta.getInt(R.styleable.CommonTabLayout_tl_indicatorGravity, Gravity.BOTTOM);
 
-        mUnderlineColor = ta.getColor(R.styleable.CommonTabLayout_tl_underline_color, Color.parseColor("#ffffff"));
-        mUnderlineHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_underline_height, DensityUtils.dp2px(0));
-        mUnderlineGravity = ta.getInt(R.styleable.CommonTabLayout_tl_underline_gravity, Gravity.BOTTOM);
+        mUnderlineColor = ta.getColor(R.styleable.CommonTabLayout_tl_underlineColor, Color.parseColor("#ffffff"));
+        mUnderlineHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_underlineHeight, DensityUtils.dp2px(0));
+        mUnderlineGravity = ta.getInt(R.styleable.CommonTabLayout_tl_underlineGravity, Gravity.BOTTOM);
 
-        mDividerColor = ta.getColor(R.styleable.CommonTabLayout_tl_divider_color, Color.parseColor("#ffffff"));
-        mDividerWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_divider_width, DensityUtils.dp2px(0));
-        mDividerPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_divider_padding, DensityUtils.dp2px(12));
+        mDividerColor = ta.getColor(R.styleable.CommonTabLayout_tl_dividerColor, Color.parseColor("#ffffff"));
+        mDividerWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_dividerWidth, DensityUtils.dp2px(0));
+        mDividerPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_dividerPadding, DensityUtils.dp2px(12));
 
-        mTextsize = ta.getDimension(R.styleable.CommonTabLayout_tl_textsize, DensityUtils.sp2px(13f));
+        mTextsize = ta.getDimension(R.styleable.CommonTabLayout_tl_textSize, DensityUtils.sp2px(13f));
         mTextSelectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
-        mTextUnselectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textUnselectColor, Color.parseColor("#AAffffff"));
+        mTextUnselectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textUnselectedColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.CommonTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.CommonTabLayout_tl_textAllCaps, false);
 
@@ -200,9 +200,9 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mIconHeight = ta.getDimension(R.styleable.CommonTabLayout_tl_iconHeight, DensityUtils.dp2px(0));
         mIconMargin = ta.getDimension(R.styleable.CommonTabLayout_tl_iconMargin, DensityUtils.dp2px(2.5f));
 
-        mTabSpaceEqual = ta.getBoolean(R.styleable.CommonTabLayout_tl_tab_space_equal, true);
-        mTabWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_width, DensityUtils.dp2px(-1));
-        mTabPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_tab_padding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(10));
+        mTabSpaceEqual = ta.getBoolean(R.styleable.CommonTabLayout_tl_tabSpaceEqual, true);
+        mTabWidth = ta.getDimension(R.styleable.CommonTabLayout_tl_tabWidth, DensityUtils.dp2px(-1));
+        mTabPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_tabPadding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(10));
 
         ta.recycle();
     }

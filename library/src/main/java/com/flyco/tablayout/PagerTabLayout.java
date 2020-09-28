@@ -170,7 +170,6 @@ public class PagerTabLayout extends HorizontalScrollView {
         mSelectedTextSizePx = ta.getDimension(R.styleable.PagerTabLayout_tl_selectedTextSize, DensityUtils.sp2px(14));
         mUnselectedTextSizePx = ta.getDimension(R.styleable.PagerTabLayout_tl_unselectedTextSize, DensityUtils.sp2px(14));
 
-        Log.i("TAG", "测试: "+mSelectedTextSizePx+"  "+mUnselectedTextSizePx);
         mSelectedTextColor = ta.getColor(R.styleable.PagerTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
         mUnselectedTextColor = ta.getColor(R.styleable.PagerTabLayout_tl_unselectedTextColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.PagerTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -354,7 +353,7 @@ public class PagerTabLayout extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
-                tab_title.setTextSize(i == mCurrentTab ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
+                tab_title.setTextSize(isSelect ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
                 if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                     tab_title.getPaint().setFakeBoldText(isSelect);
                 }
@@ -388,7 +387,7 @@ public class PagerTabLayout extends HorizontalScrollView {
             //for mIndicatorWidthEqualTitle
             if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
                 TextView next_tab_title = nextTabView.findViewById(R.id.tv_tab_title);
-                mTextPaint.setTextSize(mUnselectedTextSizePx);
+                mTextPaint.setTextSize(mSelectedTextSizePx);
                 float nextTextWidth = mTextPaint.measureText(next_tab_title.getText().toString());
                 float nextMargin = (nextTabRight - nextTabLeft - nextTextWidth) / 2;
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);

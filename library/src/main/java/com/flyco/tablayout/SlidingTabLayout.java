@@ -393,6 +393,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
+                tab_title.setTextSize(isSelect ? mSelectedTextSizePx : mUnselectedTextSizePx);
                 if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                     tab_title.getPaint().setFakeBoldText(isSelect);
                 }
@@ -410,7 +411,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         //for mIndicatorWidthEqualTitle
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             TextView tab_title = currentTabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mSelectedTextSizePx);
+            mTextPaint.setTextSize(mUnselectedTextSizePx);
             float textWidth = mTextPaint.measureText(tab_title.getText().toString());
             margin = (right - left - textWidth) / 2;
         }

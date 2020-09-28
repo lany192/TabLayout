@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 app:tl_underlineHeight="1dp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -50,7 +50,7 @@
                 app:tl_unselectedTextColor="#66000000"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_3"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -60,7 +60,7 @@
                 app:tl_textBold="BOTH"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_4"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -70,7 +70,7 @@
                 app:tl_tabWidth="95dp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_5"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -79,7 +79,7 @@
                 app:tl_selectedTextSize="18sp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_6"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -90,18 +90,24 @@
                 app:tl_selectedTextSize="18sp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_7"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:background="#57385C"
-                app:tl_indicatorCornerRadius="1.5dp"
-                app:tl_indicatorHeight="3dp"
-                app:tl_indicatorWidth="10dp"
-                app:tl_selectedTextSize="18sp"
-                app:tl_unselectedTextSize="13sp" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:tl_indicatorCornerRadius="3dp"
+                app:tl_indicatorColor="#FFF4B4"
+                app:tl_indicatorHeight="6dp"
+                app:tl_indicatorMarginBottom="10dp"
+                app:tl_indicatorWidthEqualTitle="true"
+                app:tl_selectedTextColor="#06142E"
+                app:tl_selectedTextSize="22sp"
+                app:tl_unselectedTextColor="#666666"
+                app:tl_unselectedTextSize="18sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_8"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -111,7 +117,7 @@
                 app:tl_selectedTextSize="18sp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_9"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -124,7 +130,7 @@
                 app:tl_selectedTextSize="18sp"
                 app:tl_unselectedTextSize="13sp" />
 
-            <com.flyco.tablayout.SlidingTabLayout
+            <com.flyco.tablayout.PagerTabLayout
                 android:id="@+id/tl_10"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -144,7 +150,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp"
             android:layout_width="match_parent"
-            android:layout_height="84dp" />
+            android:layout_height="200dp" />
 
     </LinearLayout>
 </ScrollView>

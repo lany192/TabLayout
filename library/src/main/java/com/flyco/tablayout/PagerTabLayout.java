@@ -11,9 +11,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +19,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.flyco.tablayout.listener.OnTabListener;
@@ -33,9 +32,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 滑动TabLayout,对于ViewPager2的依赖性强
+ * 滑动TabLayout,支持ViewPager和ViewPager2
  */
 public class PagerTabLayout extends HorizontalScrollView {
+    private ViewPager mViewPager;
     private ViewPager2 mViewPager2;
     private List<String> mTitles = new ArrayList<>();
     private LinearLayout mTabsContainer;
@@ -182,7 +182,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         ta.recycle();
     }
 
-    private ViewPager2.OnPageChangeCallback onPageChangeListener = new ViewPager2.OnPageChangeCallback() {
+    private ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -205,22 +205,72 @@ public class PagerTabLayout extends HorizontalScrollView {
     /**
      * 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况
      */
-    public void setViewPager2(ViewPager2 viewPager, String[] titles) {
+    public void setViewPager(ViewPager viewPager, String[] titles) {
+        if (this.mViewPager2 != null) {
+            throw new IllegalStateException("ViewPager2 has been set, ViewPager cannot be set ！");
+        }
         if (viewPager == null || viewPager.getAdapter() == null) {
             throw new IllegalStateException("ViewPager or ViewPager adapter can not be NULL !");
+        }
+
+        if (titles == null || titles.length == 0) {
+            throw new IllegalStateException("Titles can not be EMPTY !");
+        }
+
+        if (titles.length != viewPager.getAdapter().getCount()) {
+            throw new IllegalStateException("Titles length must be the same as the page count !");
+        }
+
+        this.mViewPager = viewPager;
+        mTitles = new ArrayList<>();
+        Collections.addAll(mTitles, titles);
+        this.mViewPager.removeOnPageChangeListener(onPageChangeListener);
+        this.mViewPager.addOnPageChangeListener(onPageChangeListener);
+        notifyDataSetChanged();
+    }
+
+    private ViewPager2.OnPageChangeCallback onPageChangeCallback = new ViewPager2.OnPageChangeCallback() {
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            /**
+             * position:当前View的位置
+             * mCurrentPositionOffset:当前View的偏移量比例.[0,1)
+             */
+            mCurrentTab = position;
+            mCurrentPositionOffset = positionOffset;
+            scrollToCurrentTab();
+            invalidate();
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            updateTabSelection(position);
+        }
+    };
+
+    /**
+     * 关联ViewPager,用于不想在ViewPager2适配器中设置titles数据的情况
+     */
+    public void setViewPager2(ViewPager2 viewPager2, String[] titles) {
+        if (this.mViewPager != null) {
+            throw new IllegalStateException("ViewPager has been set, ViewPager2 cannot be set ！");
+        }
+        if (viewPager2 == null || viewPager2.getAdapter() == null) {
+            throw new IllegalStateException("ViewPager2 or ViewPager2 adapter can not be NULL !");
         }
         if (titles == null || titles.length == 0) {
             throw new IllegalStateException("Titles can not be EMPTY !");
         }
-        if (titles.length != viewPager.getAdapter().getItemCount()) {
+        if (titles.length != viewPager2.getAdapter().getItemCount()) {
             throw new IllegalStateException("Titles length must be the same as the page count !");
         }
 
-        this.mViewPager2 = viewPager;
+        this.mViewPager2 = viewPager2;
         this.mTitles = new ArrayList<>();
         Collections.addAll(mTitles, titles);
-        this.mViewPager2.unregisterOnPageChangeCallback(onPageChangeListener);
-        this.mViewPager2.registerOnPageChangeCallback(onPageChangeListener);
+        this.mViewPager2.unregisterOnPageChangeCallback(onPageChangeCallback);
+        this.mViewPager2.registerOnPageChangeCallback(onPageChangeCallback);
         notifyDataSetChanged();
     }
 
@@ -264,21 +314,40 @@ public class PagerTabLayout extends HorizontalScrollView {
             public void onClick(View v) {
                 int position = mTabsContainer.indexOfChild(v);
                 if (position != -1) {
-                    if (mViewPager2.getCurrentItem() != position) {
-                        if (mSnapOnTabClick) {
-                            mViewPager2.setCurrentItem(position, false);
+                    if (mViewPager != null) {
+                        if (mViewPager.getCurrentItem() != position) {
+                            if (mSnapOnTabClick) {
+                                mViewPager.setCurrentItem(position, false);
+                            } else {
+                                mViewPager.setCurrentItem(position);
+                            }
+                            if (mListener != null) {
+                                mListener.onSelected(position);
+                            }
                         } else {
-                            mViewPager2.setCurrentItem(position);
-                        }
-
-                        if (mListener != null) {
-                            mListener.onSelected(position);
-                        }
-                    } else {
-                        if (mListener != null) {
-                            mListener.onUnselected(position);
+                            if (mListener != null) {
+                                mListener.onUnselected(position);
+                            }
                         }
                     }
+                    if (mViewPager2 != null) {
+                        if (mViewPager2.getCurrentItem() != position) {
+                            if (mSnapOnTabClick) {
+                                mViewPager2.setCurrentItem(position, false);
+                            } else {
+                                mViewPager2.setCurrentItem(position);
+                            }
+
+                            if (mListener != null) {
+                                mListener.onSelected(position);
+                            }
+                        } else {
+                            if (mListener != null) {
+                                mListener.onUnselected(position);
+                            }
+                        }
+                    }
+
                 }
             }
         });
@@ -511,13 +580,22 @@ public class PagerTabLayout extends HorizontalScrollView {
     //setter and getter
     public void setCurrentTab(int currentTab) {
         this.mCurrentTab = currentTab;
-        mViewPager2.setCurrentItem(currentTab);
-
+        if (mViewPager != null) {
+            mViewPager.setCurrentItem(currentTab);
+        }
+        if (mViewPager2 != null) {
+            mViewPager2.setCurrentItem(currentTab);
+        }
     }
 
     public void setCurrentTab(int currentTab, boolean smoothScroll) {
         this.mCurrentTab = currentTab;
-        mViewPager2.setCurrentItem(currentTab, smoothScroll);
+        if (mViewPager != null) {
+            mViewPager.setCurrentItem(currentTab, smoothScroll);
+        }
+        if (mViewPager2 != null) {
+            mViewPager2.setCurrentItem(currentTab, smoothScroll);
+        }
     }
 
     public void setIndicatorStyle(int indicatorStyle) {

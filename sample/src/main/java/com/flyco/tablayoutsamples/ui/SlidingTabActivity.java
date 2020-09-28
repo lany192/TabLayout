@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.flyco.tablayout.SlidingTabLayout;
+import com.flyco.tablayout.PagerTabLayout;
 import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
@@ -44,37 +44,37 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabListen
         vp.setAdapter(mAdapter);
 
         /** 默认 */
-        SlidingTabLayout tabLayout_1 = ViewFindUtils.find(decorView, R.id.tl_1);
+        PagerTabLayout tabLayout_1 = ViewFindUtils.find(decorView, R.id.tl_1);
         /**自定义部分属性*/
-        SlidingTabLayout tabLayout_2 = ViewFindUtils.find(decorView, R.id.tl_2);
+        PagerTabLayout tabLayout_2 = ViewFindUtils.find(decorView, R.id.tl_2);
         /** 字体加粗,大写 */
-        SlidingTabLayout tabLayout_3 = ViewFindUtils.find(decorView, R.id.tl_3);
+        PagerTabLayout tabLayout_3 = ViewFindUtils.find(decorView, R.id.tl_3);
         /** tab固定宽度 */
-        SlidingTabLayout tabLayout_4 = ViewFindUtils.find(decorView, R.id.tl_4);
+        PagerTabLayout tabLayout_4 = ViewFindUtils.find(decorView, R.id.tl_4);
         /** indicator固定宽度 */
-        SlidingTabLayout tabLayout_5 = ViewFindUtils.find(decorView, R.id.tl_5);
+        PagerTabLayout tabLayout_5 = ViewFindUtils.find(decorView, R.id.tl_5);
         /** indicator圆 */
-        SlidingTabLayout tabLayout_6 = ViewFindUtils.find(decorView, R.id.tl_6);
+        PagerTabLayout tabLayout_6 = ViewFindUtils.find(decorView, R.id.tl_6);
         /** indicator矩形圆角 */
-        final SlidingTabLayout tabLayout_7 = ViewFindUtils.find(decorView, R.id.tl_7);
+        final PagerTabLayout tabLayout_7 = ViewFindUtils.find(decorView, R.id.tl_7);
         /** indicator三角形 */
-        SlidingTabLayout tabLayout_8 = ViewFindUtils.find(decorView, R.id.tl_8);
+        PagerTabLayout tabLayout_8 = ViewFindUtils.find(decorView, R.id.tl_8);
         /** indicator圆角色块 */
-        SlidingTabLayout tabLayout_9 = ViewFindUtils.find(decorView, R.id.tl_9);
+        PagerTabLayout tabLayout_9 = ViewFindUtils.find(decorView, R.id.tl_9);
         /** indicator圆角色块 */
-        SlidingTabLayout tabLayout_10 = ViewFindUtils.find(decorView, R.id.tl_10);
+        PagerTabLayout tabLayout_10 = ViewFindUtils.find(decorView, R.id.tl_10);
 
-        tabLayout_1.setViewPager(vp);
-        tabLayout_2.setViewPager(vp);
+        tabLayout_1.setViewPager(vp, mTitles);
+        tabLayout_2.setViewPager(vp, mTitles);
         tabLayout_2.setOnTabSelectListener(this);
-        tabLayout_3.setViewPager(vp);
-        tabLayout_4.setViewPager(vp);
-        tabLayout_5.setViewPager(vp);
-        tabLayout_6.setViewPager(vp);
+        tabLayout_3.setViewPager(vp, mTitles);
+        tabLayout_4.setViewPager(vp, mTitles);
+        tabLayout_5.setViewPager(vp, mTitles);
+        tabLayout_6.setViewPager(vp, mTitles);
         tabLayout_7.setViewPager(vp, mTitles);
-        tabLayout_8.setViewPager(vp, mTitles, this, mFragments);
-        tabLayout_9.setViewPager(vp);
-        tabLayout_10.setViewPager(vp);
+        tabLayout_8.setViewPager(vp, mTitles);
+        tabLayout_9.setViewPager(vp, mTitles);
+        tabLayout_10.setViewPager(vp, mTitles);
 
         vp.setCurrentItem(4);
 
@@ -91,20 +91,6 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabListen
 
         tabLayout_2.showMsg(5, 5);
         tabLayout_2.setMsgMargin(5, 0, 10);
-
-//        tabLayout_7.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelect(int position) {
-//                Toast.makeText(mContext, "onTabSelect&position--->" + position, Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onTabReselect(int position) {
-//                mFragments.add(SimpleCardFragment.getInstance("后端"));
-//                mAdapter.notifyDataSetChanged();
-//                tabLayout_7.addNewTab("后端");
-//            }
-//        });
     }
 
     @Override

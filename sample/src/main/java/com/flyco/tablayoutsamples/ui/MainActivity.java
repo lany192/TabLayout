@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.flyco.tablayoutsamples.adapter.SimpleHomeAdapter;
 
-public class SimpleHomeActivity extends AppCompatActivity {
-    private final String[] mItems = {"SlidingTabLayout", "CommonTabLayout", "SegmentTabLayout", "PagerTabLayout"};
+public class MainActivity extends AppCompatActivity {
+    private final String[] mItems = {"PagerTabLayout-ViewPager", "CommonTabLayout", "SegmentTabLayout", "PagerTabLayout-ViewPager2"};
     private final Class<?>[] mClasses = {SlidingTabActivity.class, CommonTabActivity.class,
             SegmentTabActivity.class, PagerTabActivity.class};
 
@@ -27,7 +27,7 @@ public class SimpleHomeActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SimpleHomeActivity.this, mClasses[position]);
+                Intent intent = new Intent(MainActivity.this, mClasses[position]);
                 startActivity(intent);
             }
         });

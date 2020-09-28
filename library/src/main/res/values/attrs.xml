@@ -118,44 +118,6 @@
 
     </declare-styleable>
 
-    <declare-styleable name="SlidingTabLayout">
-        <!-- indicator -->
-        <attr name="tl_indicatorColor" />
-        <attr name="tl_indicatorHeight" />
-        <attr name="tl_indicatorWidth" />
-        <attr name="tl_indicatorMarginLeft" />
-        <attr name="tl_indicatorMarginTop" />
-        <attr name="tl_indicatorMarginRight" />
-        <attr name="tl_indicatorMarginBottom" />
-        <attr name="tl_indicatorCornerRadius" />
-        <attr name="tl_indicatorGravity" />
-        <attr name="tl_indicatorStyle" />
-        <attr name="tl_indicatorWidthEqualTitle" />
-
-        <!-- underline -->
-        <attr name="tl_underlineColor" />
-        <attr name="tl_underlineHeight" />
-        <attr name="tl_underlineGravity" />
-
-        <!-- divider -->
-        <attr name="tl_dividerColor" />
-        <attr name="tl_dividerWidth" />
-        <attr name="tl_dividerPadding" />
-
-        <!-- tab -->
-        <attr name="tl_tabPadding" />
-        <attr name="tl_tabSpaceEqual" />
-        <attr name="tl_tabWidth" />
-
-        <!-- title -->
-        <attr name="tl_selectedTextSize" />
-        <attr name="tl_selectedTextColor" />
-        <attr name="tl_unselectedTextSize" />
-        <attr name="tl_unselectedTextColor" />
-        <attr name="tl_textBold" />
-        <attr name="tl_textAllCaps" />
-    </declare-styleable>
-
     <declare-styleable name="CommonTabLayout">
         <!-- indicator -->
         <attr name="tl_indicatorColor" />

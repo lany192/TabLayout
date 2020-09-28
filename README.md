@@ -85,4 +85,5 @@ can be used freely with other widgets together.
 *   [FlycoRoundView](https://github.com/H07000223/FlycoRoundView)
 
 ## Thanks
+*   [FlycoTabLayout](https://github.com/H07000223/FlycoTabLayout)
 *   [PagerSlidingTabStrip](https://github.com/jpardogo/PagerSlidingTabStrip)

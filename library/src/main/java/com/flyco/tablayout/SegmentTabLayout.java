@@ -29,7 +29,6 @@ import com.flyco.tablayout.utils.FragmentChangeManager;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SegmentTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
@@ -39,7 +38,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     private int mCurrentTab;
     private int mLastTab;
     private int mTabCount;
-    /** 用于绘制显示器 */
+    /**
+     * 用于绘制显示器
+     */
     private Rect mIndicatorRect = new Rect();
     private GradientDrawable mIndicatorDrawable = new GradientDrawable();
     private GradientDrawable mRectDrawable = new GradientDrawable();
@@ -50,7 +51,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     private boolean mTabSpaceEqual;
     private float mTabWidth;
 
-    /** indicator */
+    /**
+     * indicator
+     */
     private int mIndicatorColor;
     private float mIndicatorHeight;
     private float mIndicatorCornerRadius;
@@ -62,12 +65,16 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     private boolean mIndicatorAnimEnable;
     private boolean mIndicatorBounceEnable;
 
-    /** divider */
+    /**
+     * divider
+     */
     private int mDividerColor;
     private float mDividerWidth;
     private float mDividerPadding;
 
-    /** title */
+    /**
+     * title
+     */
     private static final int TEXT_BOLD_NONE = 0;
     private static final int TEXT_BOLD_WHEN_SELECT = 1;
     private static final int TEXT_BOLD_BOTH = 2;
@@ -83,7 +90,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
 
     private int mHeight;
 
-    /** anim */
+    /**
+     * anim
+     */
     private ValueAnimator mValueAnimator;
     private OvershootInterpolator mInterpolator = new OvershootInterpolator(0.8f);
 
@@ -172,13 +181,17 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         notifyDataSetChanged();
     }
 
-    /** 关联数据支持同时切换fragments */
+    /**
+     * 关联数据支持同时切换fragments
+     */
     public void setTabData(String[] titles, FragmentActivity fa, int containerViewId, List<Fragment> fragments) {
         mFragmentChangeManager = new FragmentChangeManager(fa.getSupportFragmentManager(), containerViewId, fragments);
         setTabData(titles);
     }
 
-    /** 更新数据 */
+    /**
+     * 更新数据
+     */
     public void notifyDataSetChanged() {
         mTabsContainer.removeAllViews();
         this.mTabCount = mTitles.length;
@@ -192,7 +205,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         updateTabStyles();
     }
 
-    /** 创建并添加tab */
+    /**
+     * 创建并添加tab
+     */
     private void addTab(final int position, View tabView) {
         TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
         tv_tab_title.setText(mTitles[position]);
@@ -686,7 +701,9 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         }
     }
 
-    /** 当前类只提供了少许设置未读消息属性的方法,可以通过该方法获取MsgView对象从而各种设置 */
+    /**
+     * 当前类只提供了少许设置未读消息属性的方法,可以通过该方法获取MsgView对象从而各种设置
+     */
     public MsgView getMsgView(int position) {
         if (position >= mTabCount) {
             position = mTabCount - 1;

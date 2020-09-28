@@ -41,8 +41,8 @@
                 app:tl_indicatorWidthEqualTitle="true"
                 app:tl_tabPadding="22dp"
                 app:tl_tabSpaceEqual="true"
-                app:tl_textSelectColor="#000000"
-                app:tl_textUnselectedColor="#66000000"
+                app:tl_selectedTextColor="#000000"
+                app:tl_unselectedTextColor="#66000000"
                 app:tl_underlineColor="#1A000000"
                 app:tl_underlineHeight="1dp" />
 
@@ -85,8 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="#57385C"
-                app:tl_indicatorCornerRadius="1.5dp"
+                app:tl_indicatorCornerRadius="2dp"
                 app:tl_indicatorHeight="3dp"
+                app:tl_indicatorMarginBottom="17dp"
+                app:tl_selectedTextColor="@android:color/black"
+                app:tl_unselectedTextColor="@android:color/white"
                 app:tl_indicatorWidth="10dp" />
 
             <com.flyco.tablayout.PagerTabLayout

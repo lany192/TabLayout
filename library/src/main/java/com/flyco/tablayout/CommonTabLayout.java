@@ -175,9 +175,9 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mIndicatorMarginTop = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginTop, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
         mIndicatorMarginRight = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginRight, DensityUtils.dp2px(0));
         mIndicatorMarginBottom = ta.getDimension(R.styleable.CommonTabLayout_tl_indicatorMarginBottom, DensityUtils.dp2px(mIndicatorStyle == STYLE_BLOCK ? 7 : 0));
-        mIndicatorAnimEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_anim_enable, true);
-        mIndicatorBounceEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicator_bounce_enable, true);
-        mIndicatorAnimDuration = ta.getInt(R.styleable.CommonTabLayout_tl_indicator_anim_duration, -1);
+        mIndicatorAnimEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicatorAnimEnable, true);
+        mIndicatorBounceEnable = ta.getBoolean(R.styleable.CommonTabLayout_tl_indicatorBounceEnable, true);
+        mIndicatorAnimDuration = ta.getInt(R.styleable.CommonTabLayout_tl_indicatorAnimDuration, -1);
         mIndicatorGravity = ta.getInt(R.styleable.CommonTabLayout_tl_indicatorGravity, Gravity.BOTTOM);
 
         mUnderlineColor = ta.getColor(R.styleable.CommonTabLayout_tl_underlineColor, Color.parseColor("#ffffff"));
@@ -189,8 +189,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mDividerPadding = ta.getDimension(R.styleable.CommonTabLayout_tl_dividerPadding, DensityUtils.dp2px(12));
 
         mTextsize = ta.getDimension(R.styleable.CommonTabLayout_tl_textSize, DensityUtils.sp2px(13f));
-        mTextSelectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
-        mTextUnselectColor = ta.getColor(R.styleable.CommonTabLayout_tl_textUnselectedColor, Color.parseColor("#AAffffff"));
+        mTextSelectColor = ta.getColor(R.styleable.CommonTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
+        mTextUnselectColor = ta.getColor(R.styleable.CommonTabLayout_tl_unselectedTextColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.CommonTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.CommonTabLayout_tl_textAllCaps, false);
 

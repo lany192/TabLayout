@@ -43,17 +43,17 @@
 | tl_tabSpaceEqual |boolean| set tab space equal
 | tl_tabWidth |dimension| set tab width
 | tl_textSize |dimension| set text size
-| tl_textSelectColor |color| set text select color
-| tl_textUnselectedColor |color|  set text unselect color
+| tl_selectedTextColor |color| set text select color
+| tl_unselectedTextColor |color|  set text unselect color
 | tl_textBold |boolean| set text is bold 
 | tl_iconWidth |dimension| set icon width(only for CommonTabLayout)
 | tl_iconHeight |dimension|set icon height(only for CommonTabLayout)
 | tl_iconVisible |boolean| set icon is visible(only for CommonTabLayout)
 | tl_iconGravity |enum| set icon gravity LEFT or TOP or RIGHT or BOTTOM(only for CommonTabLayout)
 | tl_iconMargin |dimension| set icon margin with text(only for CommonTabLayout)
-| tl_indicator_anim_enable |boolean| set indicator support animation(only for CommonTabLayout)
-| tl_indicator_anim_duration |integer| set indicator animation duration(only for CommonTabLayout)
-| tl_indicator_bounce_enable |boolean| set indicator aniamtion with bounce effect(only for CommonTabLayout)
+| tl_indicatorAnimEnable |boolean| set indicator support animation(only for CommonTabLayout)
+| tl_indicatorAnimDuration |integer| set indicator animation duration(only for CommonTabLayout)
+| tl_indicatorBounceEnable |boolean| set indicator aniamtion with bounce effect(only for CommonTabLayout)
 | tl_indicatorWidthEqualTitle |boolean| set indicator width same as text(only for SlidingTabLayout)
 
 ## Dependence

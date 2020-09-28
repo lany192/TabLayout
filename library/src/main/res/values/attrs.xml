@@ -28,11 +28,11 @@
     <!-- 设置显示器长度与title一样长,只有在STYLE_NORMAL并且indicatorWidth小于零有效-->
     <attr name="tl_indicatorWidthEqualTitle" format="boolean" />
     <!-- 设置显示器支持动画-->
-    <attr name="tl_indicator_anim_enable" format="boolean" />
+    <attr name="tl_indicatorAnimEnable" format="boolean" />
     <!-- 设置显示器动画时间-->
-    <attr name="tl_indicator_anim_duration" format="integer" />
+    <attr name="tl_indicatorAnimDuration" format="integer" />
     <!-- 设置显示器支持动画回弹效果-->
-    <attr name="tl_indicator_bounce_enable" format="boolean" />
+    <attr name="tl_indicatorBounceEnable" format="boolean" />
 
     <!-- underline -->
     <!-- 设置下划线颜色 -->
@@ -65,9 +65,9 @@
     <!-- 设置字体大小 -->
     <attr name="tl_textSize" format="dimension" />
     <!-- 设置字体选中颜色 -->
-    <attr name="tl_textSelectColor" format="color" />
+    <attr name="tl_selectedTextColor" format="color" />
     <!-- 设置字体未选中颜色 -->
-    <attr name="tl_textUnselectedColor" format="color" />
+    <attr name="tl_unselectedTextColor" format="color" />
     <!-- 设置字体加粗 -->
     <attr name="tl_textBold" format="enum">
         <enum name="NONE" value="0" />
@@ -108,8 +108,8 @@
 
         <!-- title -->
         <attr name="tl_textSize" />
-        <attr name="tl_textSelectColor" />
-        <attr name="tl_textUnselectedColor" />
+        <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
 
@@ -146,11 +146,10 @@
 
         <!-- title -->
         <attr name="tl_textSize" />
-        <attr name="tl_textSelectColor" />
-        <attr name="tl_textUnselectedColor" />
+        <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
-
     </declare-styleable>
 
     <declare-styleable name="CommonTabLayout">
@@ -165,9 +164,9 @@
         <attr name="tl_indicatorCornerRadius" />
         <attr name="tl_indicatorGravity" />
         <attr name="tl_indicatorStyle" />
-        <attr name="tl_indicator_anim_enable" />
-        <attr name="tl_indicator_anim_duration" />
-        <attr name="tl_indicator_bounce_enable" />
+        <attr name="tl_indicatorAnimEnable" />
+        <attr name="tl_indicatorAnimDuration" />
+        <attr name="tl_indicatorBounceEnable" />
 
         <!-- underline -->
         <attr name="tl_underlineColor" />
@@ -186,8 +185,8 @@
 
         <!-- title -->
         <attr name="tl_textSize" />
-        <attr name="tl_textSelectColor" />
-        <attr name="tl_textUnselectedColor" />
+        <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
 
@@ -207,7 +206,6 @@
         </attr>
         <!-- 设置icon与文字间距 -->
         <attr name="tl_iconMargin" format="dimension" />
-
     </declare-styleable>
 
     <declare-styleable name="SegmentTabLayout">
@@ -219,9 +217,9 @@
         <attr name="tl_indicatorMarginRight" />
         <attr name="tl_indicatorMarginBottom" />
         <attr name="tl_indicatorCornerRadius" />
-        <attr name="tl_indicator_anim_enable" />
-        <attr name="tl_indicator_anim_duration" />
-        <attr name="tl_indicator_bounce_enable" />
+        <attr name="tl_indicatorAnimEnable" />
+        <attr name="tl_indicatorAnimDuration" />
+        <attr name="tl_indicatorBounceEnable" />
 
         <!-- divider -->
         <attr name="tl_dividerColor" />
@@ -235,14 +233,14 @@
 
         <!-- title -->
         <attr name="tl_textSize" />
-        <attr name="tl_textSelectColor" />
-        <attr name="tl_textUnselectedColor" />
+        <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
 
-        <attr name="tl_bar_color" format="color" />
-        <attr name="tl_bar_stroke_color" format="color" />
-        <attr name="tl_bar_stroke_width" format="dimension" />
+        <attr name="tl_barColor" format="color" />
+        <attr name="tl_barStrokeColor" format="color" />
+        <attr name="tl_barStrokeWidth" format="dimension" />
 
     </declare-styleable>
 

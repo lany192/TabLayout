@@ -166,8 +166,8 @@ public class PagerTabLayout extends HorizontalScrollView {
         mDividerPadding = ta.getDimension(R.styleable.PagerTabLayout_tl_dividerPadding, DensityUtils.dp2px(12));
 
         mTextsize = ta.getDimension(R.styleable.PagerTabLayout_tl_textSize, DensityUtils.sp2px(14));
-        mTextSelectColor = ta.getColor(R.styleable.PagerTabLayout_tl_textSelectColor, Color.parseColor("#ffffff"));
-        mTextUnselectColor = ta.getColor(R.styleable.PagerTabLayout_tl_textUnselectedColor, Color.parseColor("#AAffffff"));
+        mTextSelectColor = ta.getColor(R.styleable.PagerTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
+        mTextUnselectColor = ta.getColor(R.styleable.PagerTabLayout_tl_unselectedTextColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.PagerTabLayout_tl_textBold, TEXT_BOLD_NONE);
         mTextAllCaps = ta.getBoolean(R.styleable.PagerTabLayout_tl_textAllCaps, false);
 

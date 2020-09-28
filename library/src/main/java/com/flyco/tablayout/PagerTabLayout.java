@@ -299,7 +299,7 @@ public class PagerTabLayout extends HorizontalScrollView {
             TextView tv_tab_title = v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
-                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
+                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
                 tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
@@ -352,6 +352,7 @@ public class PagerTabLayout extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
+                tab_title.setTextSize(isSelect ? mSelectedTextSize : mUnselectedTextSize);
                 if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                     tab_title.getPaint().setFakeBoldText(isSelect);
                 }
@@ -369,7 +370,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         //for mIndicatorWidthEqualTitle
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             TextView tab_title = currentTabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mSelectedTextSize);
+            mTextPaint.setTextSize(mUnselectedTextSize);
             float textWidth = mTextPaint.measureText(tab_title.getText().toString());
             margin = (right - left - textWidth) / 2;
         }
@@ -385,7 +386,7 @@ public class PagerTabLayout extends HorizontalScrollView {
             //for mIndicatorWidthEqualTitle
             if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
                 TextView next_tab_title = nextTabView.findViewById(R.id.tv_tab_title);
-                mTextPaint.setTextSize(mSelectedTextSize);
+                mTextPaint.setTextSize(mUnselectedTextSize);
                 float nextTextWidth = mTextPaint.measureText(next_tab_title.getText().toString());
                 float nextMargin = (nextTabRight - nextTabLeft - nextTextWidth) / 2;
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);
@@ -817,7 +818,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mUnselectedTextSize);
+            mTextPaint.setTextSize(position == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();

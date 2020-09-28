@@ -296,7 +296,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             tabView.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
             tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
-            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
+            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
 //            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             if (mTextAllCaps) {
                 tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
@@ -894,7 +894,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mUnselectedTextSize);
+            mTextPaint.setTextSize(position == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();

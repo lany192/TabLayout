@@ -7,15 +7,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import com.flyco.tablayout.R;
+import com.flyco.tablayout.utils.DensityUtils;
 
 /**
  * 用于需要圆角矩形框背景的TextView的情况,减少直接使用TextView时引入的shape资源文件
  */
 public class MsgView extends androidx.appcompat.widget.AppCompatTextView {
-    private Context context;
     private GradientDrawable gd_background = new GradientDrawable();
     private int backgroundColor;
     private int cornerRadius;
@@ -34,7 +33,6 @@ public class MsgView extends androidx.appcompat.widget.AppCompatTextView {
 
     public MsgView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.context = context;
         obtainAttributes(context, attrs);
     }
 
@@ -79,12 +77,12 @@ public class MsgView extends androidx.appcompat.widget.AppCompatTextView {
     }
 
     public void setCornerRadius(int cornerRadius) {
-        this.cornerRadius = dp2px(cornerRadius);
+        this.cornerRadius = DensityUtils.dp2px(cornerRadius);
         setBgSelector();
     }
 
     public void setStrokeWidth(int strokeWidth) {
-        this.strokeWidth = dp2px(strokeWidth);
+        this.strokeWidth = DensityUtils.dp2px(strokeWidth);
         setBgSelector();
     }
 
@@ -125,16 +123,6 @@ public class MsgView extends androidx.appcompat.widget.AppCompatTextView {
 
     public boolean isWidthHeightEqual() {
         return isWidthHeightEqual;
-    }
-
-    protected int dp2px(float dp) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
-    }
-
-    protected int sp2px(float sp) {
-        final float scale = this.context.getResources().getDisplayMetrics().scaledDensity;
-        return (int) (sp * scale + 0.5f);
     }
 
     private void setDrawable(GradientDrawable gd, int color, int strokeColor) {

@@ -103,7 +103,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
     private static final int TEXT_BOLD_NONE = 0;
     private static final int TEXT_BOLD_WHEN_SELECT = 1;
     private static final int TEXT_BOLD_BOTH = 2;
-    private float mTextSize;
+    private float mSelectedTextSize;
+    private float mUnselectedTextSize;
     private int mSelectedTextColor;
     private int mUnselectedTextColor;
     private int mTextBold;
@@ -170,7 +171,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
         mDividerWidth = ta.getDimension(R.styleable.SlidingTabLayout_tl_dividerWidth, DensityUtils.dp2px(0));
         mDividerPadding = ta.getDimension(R.styleable.SlidingTabLayout_tl_dividerPadding, DensityUtils.dp2px(12));
 
-        mTextSize = ta.getDimension(R.styleable.SlidingTabLayout_tl_textSize, DensityUtils.sp2px(14));
+        mSelectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_selectedTextSize, DensityUtils.sp2px(14));
+        mUnselectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_unselectedTextSize, DensityUtils.sp2px(14));
         mSelectedTextColor = ta.getColor(R.styleable.SlidingTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
         mUnselectedTextColor = ta.getColor(R.styleable.SlidingTabLayout_tl_unselectedTextColor, Color.parseColor("#AAffffff"));
         mTextBold = ta.getInt(R.styleable.SlidingTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -339,7 +341,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             TextView tv_tab_title = v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
-                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
                 tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
@@ -409,7 +411,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         //for mIndicatorWidthEqualTitle
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             TextView tab_title = currentTabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mTextSize);
+            mTextPaint.setTextSize(mSelectedTextSize);
             float textWidth = mTextPaint.measureText(tab_title.getText().toString());
             margin = (right - left - textWidth) / 2;
         }
@@ -425,7 +427,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             //for mIndicatorWidthEqualTitle
             if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
                 TextView next_tab_title = nextTabView.findViewById(R.id.tv_tab_title);
-                mTextPaint.setTextSize(mTextSize);
+                mTextPaint.setTextSize(mSelectedTextSize);
                 float nextTextWidth = mTextPaint.measureText(next_tab_title.getText().toString());
                 float nextMargin = (nextTabRight - nextTabLeft - nextTextWidth) / 2;
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);
@@ -647,11 +649,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
         invalidate();
     }
 
-    public void setTextsize(float textsize) {
-        this.mTextSize = DensityUtils.sp2px(textsize);
-        updateTabStyles();
-    }
-
     public void setTextSelectColor(int textSelectColor) {
         this.mSelectedTextColor = textSelectColor;
         updateTabStyles();
@@ -753,10 +750,6 @@ public class SlidingTabLayout extends HorizontalScrollView {
         return mDividerPadding;
     }
 
-    public float getTextsize() {
-        return mTextSize;
-    }
-
     public int getTextSelectColor() {
         return mSelectedTextColor;
     }
@@ -848,7 +841,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mTextSize);
+            mTextPaint.setTextSize(mUnselectedTextSize);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();

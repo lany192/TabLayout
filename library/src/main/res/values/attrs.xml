@@ -62,10 +62,12 @@
     <attr name="tl_tabWidth" format="dimension" />
 
     <!-- title -->
-    <!-- 设置字体大小 -->
-    <attr name="tl_textSize" format="dimension" />
+    <!-- 设置选中字体大小 -->
+    <attr name="tl_selectedTextSize" format="dimension" />
     <!-- 设置字体选中颜色 -->
     <attr name="tl_selectedTextColor" format="color" />
+    <!-- 设置未选中字体大小 -->
+    <attr name="tl_unselectedTextSize" format="dimension" />
     <!-- 设置字体未选中颜色 -->
     <attr name="tl_unselectedTextColor" format="color" />
     <!-- 设置字体加粗 -->
@@ -107,8 +109,9 @@
         <attr name="tl_tabWidth" />
 
         <!-- title -->
-        <attr name="tl_textSize" />
+        <attr name="tl_selectedTextSize" />
         <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextSize" />
         <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
@@ -145,8 +148,9 @@
         <attr name="tl_tabWidth" />
 
         <!-- title -->
-        <attr name="tl_textSize" />
+        <attr name="tl_selectedTextSize" />
         <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextSize" />
         <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
@@ -184,8 +188,9 @@
         <attr name="tl_tabWidth" />
 
         <!-- title -->
-        <attr name="tl_textSize" />
+        <attr name="tl_selectedTextSize" />
         <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextSize" />
         <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />
@@ -232,8 +237,9 @@
         <attr name="tl_tabWidth" />
 
         <!-- title -->
-        <attr name="tl_textSize" />
+        <attr name="tl_selectedTextSize" />
         <attr name="tl_selectedTextColor" />
+        <attr name="tl_unselectedTextSize" />
         <attr name="tl_unselectedTextColor" />
         <attr name="tl_textBold" />
         <attr name="tl_textAllCaps" />

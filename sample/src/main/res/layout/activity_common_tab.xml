@@ -20,6 +20,8 @@
             app:tl_indicatorColor="#2C97DE"
             app:tl_selectedTextColor="#2C97DE"
             app:tl_unselectedTextColor="#66000000"
+            app:tl_selectedTextSize="15sp"
+            app:tl_unselectedTextSize="15sp"
             app:tl_underlineColor="#DDDDDD"
             app:tl_underlineHeight="1dp" />
 
@@ -39,7 +41,8 @@
             app:tl_indicatorHeight="0dp"
             app:tl_selectedTextColor="#2C97DE"
             app:tl_unselectedTextColor="#66000000"
-            app:tl_textSize="12sp"
+            app:tl_selectedTextSize="15sp"
+            app:tl_unselectedTextSize="15sp"
             app:tl_underlineColor="#DDDDDD"
             app:tl_underlineHeight="1dp" />
 
@@ -59,10 +62,11 @@
             app:tl_iconWidth="18dp"
             app:tl_indicatorBounceEnable="false"
             app:tl_indicatorColor="#2C97DE"
+            app:tl_selectedTextSize="15sp"
+            app:tl_unselectedTextSize="15sp"
             app:tl_indicatorGravity="TOP"
             app:tl_selectedTextColor="#2C97DE"
             app:tl_unselectedTextColor="#66000000"
-            app:tl_textSize="15sp"
             app:tl_underlineColor="#DDDDDD"
             app:tl_underlineGravity="TOP"
             app:tl_underlineHeight="1dp" />
@@ -74,8 +78,7 @@
             android:background="#F6CE59"
             app:tl_iconVisible="false"
             app:tl_indicatorWidth="10dp"
-            app:tl_textBold="SELECT"
-            app:tl_textSize="14sp" />
+            app:tl_textBold="SELECT" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_5"
@@ -86,8 +89,7 @@
             app:tl_indicatorCornerRadius="2dp"
             app:tl_indicatorHeight="4dp"
             app:tl_indicatorWidth="4dp"
-            app:tl_textBold="BOTH"
-            app:tl_textSize="14sp" />
+            app:tl_textBold="BOTH" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_6"
@@ -97,8 +99,7 @@
             app:tl_iconVisible="false"
             app:tl_indicatorCornerRadius="1.5dp"
             app:tl_indicatorHeight="3dp"
-            app:tl_indicatorWidth="10dp"
-            app:tl_textSize="14sp" />
+            app:tl_indicatorWidth="10dp" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_7"
@@ -110,8 +111,7 @@
             app:tl_indicatorCornerRadius="1.5dp"
             app:tl_indicatorHeight="3dp"
             app:tl_indicatorStyle="TRIANGLE"
-            app:tl_indicatorWidth="10dp"
-            app:tl_textSize="14sp" />
+            app:tl_indicatorWidth="10dp" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_8"
@@ -123,7 +123,6 @@
             app:tl_iconVisible="false"
             app:tl_indicatorMarginLeft="5dp"
             app:tl_indicatorMarginRight="5dp"
-            app:tl_indicatorStyle="BLOCK"
-            app:tl_textSize="14sp" />
+            app:tl_indicatorStyle="BLOCK" />
     </LinearLayout>
 </ScrollView>

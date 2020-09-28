@@ -78,7 +78,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     private static final int TEXT_BOLD_NONE = 0;
     private static final int TEXT_BOLD_WHEN_SELECT = 1;
     private static final int TEXT_BOLD_BOTH = 2;
-    private float mTextSize;
+    private float mSelectedTextSize;
+    private float mUnselectedTextSize;
     private int mSelectedTextColor;
     private int mUnselectedTextColor;
     private int mTextBold;
@@ -152,7 +153,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         mDividerWidth = ta.getDimension(R.styleable.SegmentTabLayout_tl_dividerWidth, DensityUtils.dp2px(1));
         mDividerPadding = ta.getDimension(R.styleable.SegmentTabLayout_tl_dividerPadding, 0);
 
-        mTextSize = ta.getDimension(R.styleable.SegmentTabLayout_tl_textSize, DensityUtils.sp2px(13f));
+        mSelectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_selectedTextSize, DensityUtils.sp2px(14));
+        mUnselectedTextSize = ta.getDimension(R.styleable.PagerTabLayout_tl_unselectedTextSize, DensityUtils.sp2px(14));
         mSelectedTextColor = ta.getColor(R.styleable.SegmentTabLayout_tl_selectedTextColor, Color.parseColor("#ffffff"));
         mUnselectedTextColor = ta.getColor(R.styleable.SegmentTabLayout_tl_unselectedTextColor, mIndicatorColor);
         mTextBold = ta.getInt(R.styleable.SegmentTabLayout_tl_textBold, TEXT_BOLD_NONE);
@@ -243,7 +245,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             tabView.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
             tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
-            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextSize);
+            tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, i == mCurrentTab ? mSelectedTextSize : mUnselectedTextSize);
 //            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             if (mTextAllCaps) {
                 tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
@@ -496,11 +498,6 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         invalidate();
     }
 
-    public void setTextsize(float textsize) {
-        this.mTextSize = DensityUtils.sp2px(textsize);
-        updateTabStyles();
-    }
-
     public void setTextSelectColor(int textSelectColor) {
         this.mSelectedTextColor = textSelectColor;
         updateTabStyles();
@@ -593,10 +590,6 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         return mDividerPadding;
     }
 
-    public float getTextsize() {
-        return mTextSize;
-    }
-
     public int getTextSelectColor() {
         return mSelectedTextColor;
     }
@@ -687,7 +680,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mTextSize);
+            mTextPaint.setTextSize(mUnselectedTextSize);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();

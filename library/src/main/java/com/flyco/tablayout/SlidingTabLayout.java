@@ -27,7 +27,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
@@ -293,11 +293,11 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
                         }
 
                         if (mListener != null) {
-                            mListener.onTabSelect(position);
+                            mListener.onSelected(position);
                         }
                     } else {
                         if (mListener != null) {
-                            mListener.onTabReselect(position);
+                            mListener.onUnselected(position);
                         }
                     }
                 }
@@ -873,9 +873,9 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         return tipView;
     }
 
-    private OnTabSelectListener mListener;
+    private OnTabListener mListener;
 
-    public void setOnTabSelectListener(OnTabSelectListener listener) {
+    public void setOnTabSelectListener(OnTabListener listener) {
         this.mListener = listener;
     }
 

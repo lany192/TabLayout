@@ -28,7 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.flyco.tablayout.listener.TabEntity;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.utils.FragmentChangeManager;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
@@ -268,11 +268,11 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
                 if (mCurrentTab != position) {
                     setCurrentTab(position);
                     if (mListener != null) {
-                        mListener.onTabSelect(position);
+                        mListener.onSelected(position);
                     }
                 } else {
                     if (mListener != null) {
-                        mListener.onTabReselect(position);
+                        mListener.onUnselected(position);
                     }
                 }
             }
@@ -921,9 +921,9 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         return tipView;
     }
 
-    private OnTabSelectListener mListener;
+    private OnTabListener mListener;
 
-    public void setOnTabSelectListener(OnTabSelectListener listener) {
+    public void setOnTabSelectListener(OnTabListener listener) {
         this.mListener = listener;
     }
 

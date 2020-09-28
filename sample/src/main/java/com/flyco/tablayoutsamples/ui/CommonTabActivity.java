@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.TabEntity;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
 import com.flyco.tablayout.widget.MsgView;
@@ -91,9 +91,9 @@ public class CommonTabActivity extends AppCompatActivity {
         mTabLayout_7.setTabData(mTabEntities);
         mTabLayout_8.setTabData(mTabEntities);
 
-        mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
+        mTabLayout_3.setOnTabSelectListener(new OnTabListener() {
             @Override
-            public void onTabSelect(int position) {
+            public void onSelected(int position) {
                 mTabLayout_1.setCurrentTab(position);
                 mTabLayout_2.setCurrentTab(position);
                 mTabLayout_4.setCurrentTab(position);
@@ -104,7 +104,7 @@ public class CommonTabActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTabReselect(int position) {
+            public void onUnselected(int position) {
 
             }
         });
@@ -144,14 +144,14 @@ public class CommonTabActivity extends AppCompatActivity {
 
     private void tl_2() {
         mTabLayout_2.setTabData(mTabEntities);
-        mTabLayout_2.setOnTabSelectListener(new OnTabSelectListener() {
+        mTabLayout_2.setOnTabSelectListener(new OnTabListener() {
             @Override
-            public void onTabSelect(int position) {
+            public void onSelected(int position) {
                 mViewPager.setCurrentItem(position);
             }
 
             @Override
-            public void onTabReselect(int position) {
+            public void onUnselected(int position) {
                 if (position == 0) {
                     mTabLayout_2.showMsg(0, mRandom.nextInt(100) + 1);
 //                    UnreadMsgUtils.show(mTabLayout_2.getMsgView(0), mRandom.nextInt(100) + 1);

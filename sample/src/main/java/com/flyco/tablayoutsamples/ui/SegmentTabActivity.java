@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -75,14 +75,14 @@ public class SegmentTabActivity extends AppCompatActivity {
         vp_3.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
         mTabLayout_3.setTabData(mTitles_3);
-        mTabLayout_3.setOnTabSelectListener(new OnTabSelectListener() {
+        mTabLayout_3.setOnTabSelectListener(new OnTabListener() {
             @Override
-            public void onTabSelect(int position) {
+            public void onSelected(int position) {
                 vp_3.setCurrentItem(position);
             }
 
             @Override
-            public void onTabReselect(int position) {
+            public void onUnselected(int position) {
             }
         });
 

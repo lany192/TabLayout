@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SlidingTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.flyco.tablayout.listener.OnTabListener;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -20,7 +20,7 @@ import com.flyco.tablayoutsamples.utils.ViewFindUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlidingTabActivity extends AppCompatActivity implements OnTabSelectListener {
+public class SlidingTabActivity extends AppCompatActivity implements OnTabListener {
     private List<Fragment> mFragments = new ArrayList<>();
     private final String[] mTitles = {
             "热门", "iOS", "Android"
@@ -108,12 +108,12 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
     }
 
     @Override
-    public void onTabSelect(int position) {
+    public void onSelected(int position) {
         Toast.makeText(this, "onTabSelect&position--->" + position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onTabReselect(int position) {
+    public void onUnselected(int position) {
         Toast.makeText(this, "onTabReselect&position--->" + position, Toast.LENGTH_SHORT).show();
     }
 

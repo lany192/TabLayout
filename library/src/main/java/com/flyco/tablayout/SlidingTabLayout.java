@@ -393,7 +393,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
 
             if (tab_title != null) {
                 tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
-                tab_title.setTextSize(isSelect ? mSelectedTextSizePx : mUnselectedTextSizePx);
+                tab_title.setTextSize(isSelect ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
                 if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                     tab_title.getPaint().setFakeBoldText(isSelect);
                 }

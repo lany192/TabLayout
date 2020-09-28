@@ -259,7 +259,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     private void addTab(final int position, View tabView) {
         TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
         tv_tab_title.setText(tabEntities.get(position).getTabTitle());
-        ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+        ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
         iv_tab_icon.setImageResource(tabEntities.get(position).getTabUnselectedIcon());
 
         tabView.setOnClickListener(new OnClickListener() {
@@ -307,7 +307,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
                 tv_tab_title.getPaint().setFakeBoldText(false);
             }
 
-            ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+            ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
             if (mIconVisible) {
                 iv_tab_icon.setVisibility(View.VISIBLE);
                 TabEntity tabEntity = tabEntities.get(i);
@@ -338,7 +338,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             final boolean isSelect = i == position;
             TextView tab_title = tabView.findViewById(R.id.tv_tab_title);
             tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
-            ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+            tab_title.setTextSize(isSelect ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
+            ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
             TabEntity tabEntity = tabEntities.get(i);
             iv_tab_icon.setImageResource(isSelect ? tabEntity.getTabSelectedIcon() : tabEntity.getTabUnselectedIcon());
             if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
@@ -351,13 +352,9 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         final View currentTabView = mTabsContainer.getChildAt(this.mCurrentTab);
         mCurrentP.left = currentTabView.getLeft();
         mCurrentP.right = currentTabView.getRight();
-
         final View lastTabView = mTabsContainer.getChildAt(this.mLastTab);
         mLastP.left = lastTabView.getLeft();
         mLastP.right = lastTabView.getRight();
-
-//        Log.d("AAA", "mLastP--->" + mLastP.left + "&" + mLastP.right);
-//        Log.d("AAA", "mCurrentP--->" + mCurrentP.left + "&" + mCurrentP.right);
         if (mLastP.left == mCurrentP.left && mLastP.right == mCurrentP.right) {
             invalidate();
         } else {
@@ -365,7 +362,6 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             if (mIndicatorBounceEnable) {
                 mValueAnimator.setInterpolator(mInterpolator);
             }
-
             if (mIndicatorAnimDuration < 0) {
                 mIndicatorAnimDuration = mIndicatorBounceEnable ? 500 : 250;
             }
@@ -809,7 +805,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
     public ImageView getIconView(int tab) {
         View tabView = mTabsContainer.getChildAt(tab);
-        ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
+        ImageView iv_tab_icon = tabView.findViewById(R.id.iv_tab_icon);
         return iv_tab_icon;
     }
 

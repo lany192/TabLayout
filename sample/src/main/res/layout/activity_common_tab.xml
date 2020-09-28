@@ -28,7 +28,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_2"
             android:layout_width="match_parent"
-            android:layout_height="84dp" />
+            android:layout_height="150dp" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_2"
@@ -49,12 +49,12 @@
         <FrameLayout
             android:id="@+id/fl_change"
             android:layout_width="match_parent"
-            android:layout_height="84dp"></FrameLayout>
+            android:layout_height="100dp"/>
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#ffffff"
             app:tl_iconGravity="LEFT"
             app:tl_iconHeight="18dp"
@@ -62,8 +62,8 @@
             app:tl_iconWidth="18dp"
             app:tl_indicatorBounceEnable="false"
             app:tl_indicatorColor="#2C97DE"
-            app:tl_selectedTextSize="15sp"
-            app:tl_unselectedTextSize="15sp"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorGravity="TOP"
             app:tl_selectedTextColor="#2C97DE"
             app:tl_unselectedTextColor="#66000000"
@@ -74,29 +74,35 @@
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#F6CE59"
             app:tl_iconVisible="false"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorWidth="10dp"
             app:tl_textBold="SELECT" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#EC7263"
             app:tl_iconVisible="false"
             app:tl_indicatorCornerRadius="2dp"
             app:tl_indicatorHeight="4dp"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorWidth="4dp"
             app:tl_textBold="BOTH" />
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#57385C"
             app:tl_iconVisible="false"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorCornerRadius="1.5dp"
             app:tl_indicatorHeight="3dp"
             app:tl_indicatorWidth="10dp" />
@@ -104,11 +110,13 @@
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#E45171"
             app:tl_iconVisible="false"
             app:tl_indicatorColor="#eeeeee"
             app:tl_indicatorCornerRadius="1.5dp"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorHeight="3dp"
             app:tl_indicatorStyle="TRIANGLE"
             app:tl_indicatorWidth="10dp" />
@@ -116,11 +124,13 @@
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/tl_8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:background="#6D8FB0"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             app:tl_iconVisible="false"
+            app:tl_selectedTextSize="18sp"
+            app:tl_unselectedTextSize="13sp"
             app:tl_indicatorMarginLeft="5dp"
             app:tl_indicatorMarginRight="5dp"
             app:tl_indicatorStyle="BLOCK" />

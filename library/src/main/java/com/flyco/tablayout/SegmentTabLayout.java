@@ -264,6 +264,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             final boolean isSelect = i == position;
             TextView tab_title = tabView.findViewById(R.id.tv_tab_title);
             tab_title.setTextColor(isSelect ? mSelectedTextColor : mUnselectedTextColor);
+            tab_title.setTextSize(isSelect ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
             if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                 tab_title.getPaint().setFakeBoldText(isSelect);
             }

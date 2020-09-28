@@ -25,7 +25,7 @@ import java.util.List;
 
 public class PagerTabActivity extends AppCompatActivity implements OnTabListener {
     private List<Fragment> mFragments = new ArrayList<>();
-    private final String[] mTitles = {"热门", "iOS", "Android", "前端", "后端", "设计", "工具资源"};
+    private final String[] mTitles = {"精选", "轻读", "排行", "分类", "自定义", "设计", "工具资源"};
     private MyPagerAdapter mAdapter;
 
     @Override

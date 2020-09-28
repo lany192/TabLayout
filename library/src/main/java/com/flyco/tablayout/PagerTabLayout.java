@@ -212,11 +212,6 @@ public class PagerTabLayout extends HorizontalScrollView {
         if (viewPager == null || viewPager.getAdapter() == null) {
             throw new IllegalStateException("ViewPager or ViewPager adapter can not be NULL !");
         }
-
-        if (titles == null || titles.length == 0) {
-            throw new IllegalStateException("Titles can not be EMPTY !");
-        }
-
         if (titles.length != viewPager.getAdapter().getCount()) {
             throw new IllegalStateException("Titles length must be the same as the page count !");
         }
@@ -258,9 +253,6 @@ public class PagerTabLayout extends HorizontalScrollView {
         }
         if (viewPager2 == null || viewPager2.getAdapter() == null) {
             throw new IllegalStateException("ViewPager2 or ViewPager2 adapter can not be NULL !");
-        }
-        if (titles == null || titles.length == 0) {
-            throw new IllegalStateException("Titles can not be EMPTY !");
         }
         if (titles.length != viewPager2.getAdapter().getItemCount()) {
             throw new IllegalStateException("Titles length must be the same as the page count !");

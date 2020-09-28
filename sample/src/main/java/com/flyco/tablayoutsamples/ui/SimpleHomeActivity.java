@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.flyco.tablayoutsamples.adapter.SimpleHomeAdapter;
 
 public class SimpleHomeActivity extends AppCompatActivity {
-    private final String[] mItems = {"SlidingTabLayout", "CommonTabLayout", "SegmentTabLayout"};
+    private final String[] mItems = {"SlidingTabLayout", "CommonTabLayout", "SegmentTabLayout", "PagerTabLayout"};
     private final Class<?>[] mClasses = {SlidingTabActivity.class, CommonTabActivity.class,
-            SegmentTabActivity.class};
+            SegmentTabActivity.class, PagerTabActivity.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

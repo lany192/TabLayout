@@ -52,7 +52,10 @@
                 android:id="@+id/tl_3"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="#3F9FE0"
+                app:tl_selectedTextColor="#06142E"
+                app:tl_selectedTextSize="22sp"
+                app:tl_unselectedTextColor="#666666"
+                app:tl_unselectedTextSize="18sp"
                 app:tl_textAllCaps="true"
                 app:tl_textBold="BOTH" />
 

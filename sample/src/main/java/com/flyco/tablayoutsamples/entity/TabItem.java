@@ -1,20 +1,34 @@
 package com.flyco.tablayoutsamples.entity;
 
+import android.text.SpannableString;
+
 import com.flyco.tablayout.listener.TabEntity;
 
 public class TabItem implements TabEntity {
-    public String title;
-    public int selectedIcon;
-    public int unSelectedIcon;
+    protected SpannableString title;
+    protected int selectedIcon;
+    protected int unSelectedIcon;
 
     public TabItem(String title, int selectedIcon, int unSelectedIcon) {
+        this.title = new SpannableString(title);
+        this.selectedIcon = selectedIcon;
+        this.unSelectedIcon = unSelectedIcon;
+    }
+
+    public TabItem(CharSequence title, int selectedIcon, int unSelectedIcon) {
+        this.title = new SpannableString(title);
+        this.selectedIcon = selectedIcon;
+        this.unSelectedIcon = unSelectedIcon;
+    }
+
+    public TabItem(SpannableString title, int selectedIcon, int unSelectedIcon) {
         this.title = title;
         this.selectedIcon = selectedIcon;
         this.unSelectedIcon = unSelectedIcon;
     }
 
     @Override
-    public String getTabTitle() {
+    public SpannableString getTabTitle() {
         return title;
     }
 

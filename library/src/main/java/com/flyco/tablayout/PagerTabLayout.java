@@ -7,7 +7,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
@@ -65,6 +67,7 @@ public class PagerTabLayout extends HorizontalScrollView {
     private float mTabPadding;
     private boolean mTabSpaceEqual;
     private float mTabWidth;
+    private Drawable mTabBackground;
 
     /**
      * indicator
@@ -182,6 +185,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         mTabSpaceEqual = ta.getBoolean(R.styleable.PagerTabLayout_tl_tabSpaceEqual, false);
         mTabWidth = ta.getDimension(R.styleable.PagerTabLayout_tl_tabWidth, DensityUtils.dp2px(-1));
         mTabPadding = ta.getDimension(R.styleable.PagerTabLayout_tl_tabPadding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(20));
+        mTabBackground = ta.getDrawable(R.styleable.PagerTabLayout_tl_tabBackground);
 
         ta.recycle();
     }
@@ -377,6 +381,9 @@ public class PagerTabLayout extends HorizontalScrollView {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
                 tv_tab_title.setTextSize(i == mCurrentTab ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
                 tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
+                if (mTabBackground != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    tv_tab_title.setBackground(mTabBackground);
+                }
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
                 }

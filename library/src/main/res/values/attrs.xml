@@ -60,6 +60,8 @@
     <attr name="tl_tabSpaceEqual" format="boolean" />
     <!-- 设置tab固定大小 -->
     <attr name="tl_tabWidth" format="dimension" />
+    <!-- 设置tab背景 -->
+    <attr name="tl_tabBackground" format="reference" />
 
     <!-- title -->
     <!-- 设置选中字体大小 -->
@@ -107,6 +109,7 @@
         <attr name="tl_tabPadding" />
         <attr name="tl_tabSpaceEqual" />
         <attr name="tl_tabWidth" />
+        <attr name="tl_tabBackground" />
 
         <!-- title -->
         <attr name="tl_selectedTextSize" />

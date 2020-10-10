@@ -13,9 +13,9 @@ import com.flyco.tablayoutsamples.R;
 
 @SuppressLint("ValidFragment")
 public class SimpleCardFragment extends Fragment {
-    private String mTitle;
+    private CharSequence mTitle;
 
-    public static SimpleCardFragment getInstance(String title) {
+    public static SimpleCardFragment getInstance(CharSequence title) {
         SimpleCardFragment sf = new SimpleCardFragment();
         sf.mTitle = title;
         return sf;

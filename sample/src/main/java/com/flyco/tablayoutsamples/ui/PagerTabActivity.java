@@ -9,14 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.flyco.tablayout.PagerTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectedListener;
-import com.flyco.tablayout.utils.Utils;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -62,17 +59,17 @@ public class PagerTabActivity extends AppCompatActivity implements OnTabSelected
         /** indicator圆角色块 */
         PagerTabLayout tabLayout_10 = ViewFindUtils.find(decorView, R.id.tl_10);
 
-        tabLayout_1.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_2.setViewPager2(viewPager2, Utils.convert(mTitles));
+        tabLayout_1.setViewPager2(viewPager2, mTitles);
+        tabLayout_2.setViewPager2(viewPager2, mTitles);
         tabLayout_2.addOnTabSelectedListener(this);
-        tabLayout_3.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_4.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_5.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_6.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_7.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_8.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_9.setViewPager2(viewPager2, Utils.convert(mTitles));
-        tabLayout_10.setViewPager2(viewPager2, Utils.convert(mTitles));
+        tabLayout_3.setViewPager2(viewPager2, mTitles);
+        tabLayout_4.setViewPager2(viewPager2, mTitles);
+        tabLayout_5.setViewPager2(viewPager2, mTitles);
+        tabLayout_6.setViewPager2(viewPager2, mTitles);
+        tabLayout_7.setViewPager2(viewPager2, mTitles);
+        tabLayout_8.setViewPager2(viewPager2, mTitles);
+        tabLayout_9.setViewPager2(viewPager2, mTitles);
+        tabLayout_10.setViewPager2(viewPager2, mTitles);
 
         viewPager2.setCurrentItem(4);
 
@@ -105,14 +102,6 @@ public class PagerTabActivity extends AppCompatActivity implements OnTabSelected
 
         public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
             super(fragmentActivity);
-        }
-
-        public MyPagerAdapter(@NonNull Fragment fragment) {
-            super(fragment);
-        }
-
-        public MyPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-            super(fragmentManager, lifecycle);
         }
 
         @NonNull

@@ -10,7 +10,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.Gravity;
@@ -27,7 +26,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.flyco.tablayout.listener.OnTabSelectedListener;
 import com.flyco.tablayout.utils.DensityUtils;
 import com.flyco.tablayout.utils.UnreadMsgUtils;
-import com.flyco.tablayout.utils.Utils;
 import com.flyco.tablayout.widget.MsgView;
 
 import java.util.ArrayList;
@@ -40,7 +38,7 @@ import java.util.List;
 public class PagerTabLayout extends HorizontalScrollView {
     private ViewPager mViewPager;
     private ViewPager2 mViewPager2;
-    private List<SpannableString> mTitles = new ArrayList<>();
+    private List<CharSequence> mTitles = new ArrayList<>();
     private LinearLayout mTabsContainer;
     private int mCurrentTab;
     private float mCurrentPositionOffset;
@@ -221,7 +219,7 @@ public class PagerTabLayout extends HorizontalScrollView {
     /**
      * 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况
      */
-    public void setViewPager(ViewPager viewPager, SpannableString[] titles) {
+    public void setViewPager(ViewPager viewPager, CharSequence[] titles) {
         if (this.mViewPager2 != null) {
             throw new IllegalStateException("ViewPager2 has been set, ViewPager cannot be set ！");
         }
@@ -260,14 +258,10 @@ public class PagerTabLayout extends HorizontalScrollView {
         }
     };
 
-    public void setViewPager2(ViewPager2 viewPager2, String[] titles) {
-        setViewPager2(viewPager2, Utils.convert(titles));
-    }
-
     /**
      * 关联ViewPager,用于不想在ViewPager2适配器中设置titles数据的情况
      */
-    public void setViewPager2(ViewPager2 viewPager2, SpannableString[] titles) {
+    public void setViewPager2(ViewPager2 viewPager2, CharSequence[] titles) {
         if (this.mViewPager != null) {
             throw new IllegalStateException("ViewPager has been set, ViewPager2 cannot be set ！");
         }
@@ -295,18 +289,18 @@ public class PagerTabLayout extends HorizontalScrollView {
         View tabView;
         for (int i = 0; i < mTabCount; i++) {
             tabView = View.inflate(getContext(), R.layout.layout_tab, null);
-            SpannableString pageTitle = mTitles.get(i);
+            CharSequence pageTitle = mTitles.get(i);
             addTab(i, pageTitle, tabView);
         }
         updateTabStyles();
     }
 
-    public void addNewTab(SpannableString title) {
+    public void addNewTab(CharSequence title) {
         View tabView = View.inflate(getContext(), R.layout.layout_tab, null);
         if (mTitles != null) {
             mTitles.add(title);
         }
-        SpannableString pageTitle = mTitles.get(mTabCount);
+        CharSequence pageTitle = mTitles.get(mTabCount);
         addTab(mTabCount, pageTitle, tabView);
         this.mTabCount = mTitles.size();
         updateTabStyles();
@@ -315,7 +309,7 @@ public class PagerTabLayout extends HorizontalScrollView {
     /**
      * 创建并添加tab
      */
-    private void addTab(final int position, SpannableString title, View tabView) {
+    private void addTab(final int position, CharSequence title, View tabView) {
         TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
         if (tv_tab_title != null) {
             if (title != null) tv_tab_title.setText(title);

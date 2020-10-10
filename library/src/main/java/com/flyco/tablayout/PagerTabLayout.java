@@ -453,7 +453,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             TextView tab_title = currentTabView.findViewById(R.id.tv_tab_title);
             mTextPaint.setTextSize(mUnselectedTextSizePx);
-            float textWidth = mTextPaint.measureText(tab_title.getText().toString());
+            float textWidth = mTextPaint.measureText(tab_title.getText(), 0, tab_title.getText().length());
             margin = (right - left - textWidth) / 2;
         }
 
@@ -469,7 +469,7 @@ public class PagerTabLayout extends HorizontalScrollView {
             if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
                 TextView next_tab_title = nextTabView.findViewById(R.id.tv_tab_title);
                 mTextPaint.setTextSize(mSelectedTextSizePx);
-                float nextTextWidth = mTextPaint.measureText(next_tab_title.getText().toString());
+                float nextTextWidth = mTextPaint.measureText(next_tab_title.getText(), 0, next_tab_title.getText().length());
                 float nextMargin = (nextTabRight - nextTabLeft - nextTextWidth) / 2;
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);
             }
@@ -910,7 +910,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
             mTextPaint.setTextSize(position == mCurrentTab ? mSelectedTextSizePx : mUnselectedTextSizePx);
-            float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
+            float textWidth = mTextPaint.measureText(tv_tab_title.getText(), 0, tv_tab_title.getText().length());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();
             lp.leftMargin = mTabWidth >= 0 ? (int) (mTabWidth / 2 + textWidth / 2 + DensityUtils.dp2px(leftPadding)) : (int) (mTabPadding + textWidth + DensityUtils.dp2px(leftPadding));

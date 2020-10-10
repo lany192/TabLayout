@@ -12,7 +12,7 @@
 	}
    
 	dependencies {
-	        implementation 'com.github.lany192:TabLayout:3.0.0'
+	        implementation 'com.github.lany192:TabLayout:latest'
 	}
 	
 # Sample

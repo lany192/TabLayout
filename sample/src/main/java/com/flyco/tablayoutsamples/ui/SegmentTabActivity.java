@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectedListener;
+import com.flyco.tablayout.utils.Utils;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -50,11 +51,11 @@ public class SegmentTabActivity extends AppCompatActivity {
         SegmentTabLayout tabLayout_4 = ViewFindUtils.find(mDecorView, R.id.tl_4);
         SegmentTabLayout tabLayout_5 = ViewFindUtils.find(mDecorView, R.id.tl_5);
 
-        tabLayout_1.setTabData(mTitles);
-        tabLayout_2.setTabData(mTitles_2);
+        tabLayout_1.setTabData( Utils.convert(mTitles));
+        tabLayout_2.setTabData(Utils.convert(mTitles_2));
         tl_3();
-        tabLayout_4.setTabData(mTitles_2, this, R.id.fl_change, mFragments2);
-        tabLayout_5.setTabData(mTitles_3);
+        tabLayout_4.setTabData(Utils.convert(mTitles_2), this, R.id.fl_change, mFragments2);
+        tabLayout_5.setTabData(Utils.convert(mTitles_3));
 
         //显示未读红点
         tabLayout_1.showDot(2);
@@ -74,7 +75,7 @@ public class SegmentTabActivity extends AppCompatActivity {
         final ViewPager vp_3 = ViewFindUtils.find(mDecorView, R.id.vp_2);
         vp_3.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
-        mTabLayout_3.setTabData(mTitles_3);
+        mTabLayout_3.setTabData(Utils.convert(mTitles_3));
         mTabLayout_3.addOnTabSelectedListener(new OnTabSelectedListener() {
             @Override
             public void onSelected(int position) {

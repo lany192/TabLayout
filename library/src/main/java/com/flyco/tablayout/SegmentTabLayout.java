@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.SpannableString;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SegmentTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
-    private String[] mTitles;
+    private SpannableString[] mTitles;
     private LinearLayout mTabsContainer;
     private int mCurrentTab;
     private int mLastTab;
@@ -174,7 +175,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         ta.recycle();
     }
 
-    public void setTabData(String[] titles) {
+    public void setTabData(SpannableString[] titles) {
         if (titles == null || titles.length == 0) {
             throw new IllegalStateException("Titles can not be NULL or EMPTY !");
         }
@@ -187,7 +188,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     /**
      * 关联数据支持同时切换fragments
      */
-    public void setTabData(String[] titles, FragmentActivity fa, int containerViewId, List<Fragment> fragments) {
+    public void setTabData(SpannableString[] titles, FragmentActivity fa, int containerViewId, List<Fragment> fragments) {
         mFragmentChangeManager = new FragmentChangeManager(fa.getSupportFragmentManager(), containerViewId, fragments);
         setTabData(titles);
     }

@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.flyco.tablayout.PagerTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectedListener;
+import com.flyco.tablayout.utils.Utils;
 import com.flyco.tablayout.widget.MsgView;
 import com.flyco.tablayoutsamples.R;
 import com.flyco.tablayoutsamples.utils.ViewFindUtils;
@@ -64,17 +65,17 @@ public class SlidingTabActivity extends AppCompatActivity implements OnTabSelect
         /** indicator圆角色块 */
         PagerTabLayout tabLayout_10 = ViewFindUtils.find(decorView, R.id.tl_10);
 
-        tabLayout_1.setViewPager(vp, mTitles);
-        tabLayout_2.setViewPager(vp, mTitles);
+        tabLayout_1.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_2.setViewPager(vp,  Utils.convert(mTitles));
         tabLayout_2.addOnTabSelectedListener(this);
-        tabLayout_3.setViewPager(vp, mTitles);
-        tabLayout_4.setViewPager(vp, mTitles);
-        tabLayout_5.setViewPager(vp, mTitles);
-        tabLayout_6.setViewPager(vp, mTitles);
-        tabLayout_7.setViewPager(vp, mTitles);
-        tabLayout_8.setViewPager(vp, mTitles);
-        tabLayout_9.setViewPager(vp, mTitles);
-        tabLayout_10.setViewPager(vp, mTitles);
+        tabLayout_3.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_4.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_5.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_6.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_7.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_8.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_9.setViewPager(vp,  Utils.convert(mTitles));
+        tabLayout_10.setViewPager(vp,  Utils.convert(mTitles));
 
         vp.setCurrentItem(4);
 

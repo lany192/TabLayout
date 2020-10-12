@@ -377,14 +377,15 @@ public class PagerTabLayout extends HorizontalScrollView {
     private void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
             View v = mTabsContainer.getChildAt(i);
+            if (mTabBackground != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                v.setBackground(mTabBackground);
+            }
             TextView tv_tab_title = v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
                 tv_tab_title.setTextSize(i == mCurrentTab ? DensityUtils.px2sp(mSelectedTextSizePx) : DensityUtils.px2sp(mUnselectedTextSizePx));
                 tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
-                if (mTabBackground != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    tv_tab_title.setBackground(mTabBackground);
-                }
+
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
                 }

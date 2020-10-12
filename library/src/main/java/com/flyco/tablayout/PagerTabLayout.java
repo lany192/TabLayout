@@ -115,7 +115,11 @@ public class PagerTabLayout extends HorizontalScrollView {
     private boolean mSnapOnTabClick;
 
 
-    private final List<OnTabSelectedListener> selectedListeners = new ArrayList<>();
+    // show MsgTipView
+    private Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private SparseArray<Boolean> mInitSetMap = new SparseArray<>();
+
+    private final List<OnTabSelectedListener> listeners = new ArrayList<>();
 
     public PagerTabLayout(Context context) {
         this(context, null, 0);
@@ -191,13 +195,13 @@ public class PagerTabLayout extends HorizontalScrollView {
     }
 
     public void addOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
-        if (!selectedListeners.contains(listener)) {
-            selectedListeners.add(listener);
+        if (!listeners.contains(listener)) {
+            listeners.add(listener);
         }
     }
 
     public void removeOnTabSelectedListener(@Nullable OnTabSelectedListener listener) {
-        selectedListeners.remove(listener);
+        listeners.remove(listener);
     }
 
     private ViewPager.SimpleOnPageChangeListener onPageChangeListener = new ViewPager.SimpleOnPageChangeListener() {
@@ -290,9 +294,8 @@ public class PagerTabLayout extends HorizontalScrollView {
     public void notifyDataSetChanged() {
         mTabsContainer.removeAllViews();
         this.mTabCount = mTitles.size();
-        View tabView;
         for (int i = 0; i < mTabCount; i++) {
-            tabView = View.inflate(getContext(), R.layout.layout_tab, null);
+            View tabView = View.inflate(getContext(), R.layout.layout_tab, null);
             CharSequence pageTitle = mTitles.get(i);
             addTab(i, pageTitle, tabView);
         }
@@ -318,7 +321,6 @@ public class PagerTabLayout extends HorizontalScrollView {
         if (tv_tab_title != null) {
             if (title != null) tv_tab_title.setText(title);
         }
-
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -331,12 +333,12 @@ public class PagerTabLayout extends HorizontalScrollView {
                             } else {
                                 mViewPager.setCurrentItem(position);
                             }
-                            for (int i = 0; i < selectedListeners.size(); i++) {
-                                selectedListeners.get(i).onSelected(position);
+                            for (int i = 0; i < listeners.size(); i++) {
+                                listeners.get(i).onSelected(position);
                             }
                         } else {
-                            for (int i = 0; i < selectedListeners.size(); i++) {
-                                selectedListeners.get(i).onUnselected(position);
+                            for (int i = 0; i < listeners.size(); i++) {
+                                listeners.get(i).onUnselected(position);
                             }
                         }
                     }
@@ -347,12 +349,12 @@ public class PagerTabLayout extends HorizontalScrollView {
                             } else {
                                 mViewPager2.setCurrentItem(position);
                             }
-                            for (int i = 0; i < selectedListeners.size(); i++) {
-                                selectedListeners.get(i).onSelected(position);
+                            for (int i = 0; i < listeners.size(); i++) {
+                                listeners.get(i).onSelected(position);
                             }
                         } else {
-                            for (int i = 0; i < selectedListeners.size(); i++) {
-                                selectedListeners.get(i).onUnselected(position);
+                            for (int i = 0; i < listeners.size(); i++) {
+                                listeners.get(i).onUnselected(position);
                             }
                         }
                     }
@@ -375,7 +377,6 @@ public class PagerTabLayout extends HorizontalScrollView {
     private void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
             View v = mTabsContainer.getChildAt(i);
-//            v.setPadding((int) mTabPadding, v.getPaddingTop(), (int) mTabPadding, v.getPaddingBottom());
             TextView tv_tab_title = v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
@@ -842,10 +843,6 @@ public class PagerTabLayout extends HorizontalScrollView {
 
     //setter and getter
 
-    // show MsgTipView
-    private Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private SparseArray<Boolean> mInitSetMap = new SparseArray<>();
-
     /**
      * 显示未读消息
      *
@@ -927,8 +924,20 @@ public class PagerTabLayout extends HorizontalScrollView {
             position = mTabCount - 1;
         }
         View tabView = mTabsContainer.getChildAt(position);
-        MsgView tipView = tabView.findViewById(R.id.rtv_msg_tip);
-        return tipView;
+        return tabView.findViewById(R.id.rtv_msg_tip);
+    }
+
+    /**
+     * 获取指定的TabView
+     *
+     * @param position 位置
+     * @return 视图
+     */
+    public View getTabView(int position) {
+        if (position >= mTabCount) {
+            position = mTabCount - 1;
+        }
+        return mTabsContainer.getChildAt(position);
     }
 
     @Override

@@ -21,6 +21,7 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -67,7 +68,9 @@ public class PagerTabLayout extends HorizontalScrollView {
     private float mTabPadding;
     private boolean mTabSpaceEqual;
     private float mTabWidth;
-    private Drawable mTabBackground;
+
+    @DrawableRes
+    private int mTabBackground;
 
     /**
      * indicator
@@ -189,7 +192,7 @@ public class PagerTabLayout extends HorizontalScrollView {
         mTabSpaceEqual = ta.getBoolean(R.styleable.PagerTabLayout_tl_tabSpaceEqual, false);
         mTabWidth = ta.getDimension(R.styleable.PagerTabLayout_tl_tabWidth, DensityUtils.dp2px(-1));
         mTabPadding = ta.getDimension(R.styleable.PagerTabLayout_tl_tabPadding, mTabSpaceEqual || mTabWidth > 0 ? DensityUtils.dp2px(0) : DensityUtils.dp2px(20));
-        mTabBackground = ta.getDrawable(R.styleable.PagerTabLayout_tl_tabBackground);
+        mTabBackground = ta.getResourceId(R.styleable.PagerTabLayout_tl_tabBackground, 0);
 
         ta.recycle();
     }
@@ -377,9 +380,7 @@ public class PagerTabLayout extends HorizontalScrollView {
     private void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
             View v = mTabsContainer.getChildAt(i);
-            if (mTabBackground != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                v.setBackground(mTabBackground);
-            }
+            v.setBackgroundResource(mTabBackground);
             TextView tv_tab_title = v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mSelectedTextColor : mUnselectedTextColor);
